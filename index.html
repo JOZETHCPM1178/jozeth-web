@@ -1,392 +1,376 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>JOZETHCPM1 — Neon Hub Mejorado</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
-
-  :root {
-    --bg:#040514;
-    --panel: rgba(255,255,255,0.03);
-    --neon1:#00f0ff;
-    --neon2:#ff00d4;
-    --accent:#ffd700;
-    --glass: rgba(255,255,255,0.04);
-    --muted: rgba(255,255,255,0.6);
-  }
-
-  html, body {
-    height: 100%; margin: 0; font-family: 'Inter', system-ui, Arial, sans-serif; 
-    background:
-      radial-gradient(1200px 600px at 10% 10%, rgba(0,240,255,0.15), transparent 15%),
-      radial-gradient(1000px 500px at 90% 90%, rgba(255,0,212,0.12), transparent 15%),
-      var(--bg); 
+  /* Estilo resumido y limpio para foco funcional */
+  body {
+    background: #040514;
     color: #e6f7ff;
-    -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+    font-family: Arial, sans-serif;
+    margin: 0; padding: 20px;
   }
-
-  /* Tornasol neón animado fondo */
-  body::before {
-    content: "";
-    position: fixed;
-    top: -200px; left: -200px; right: -200px; bottom: -200px;
-    background: linear-gradient(270deg, #00f0ff, #ff00d4, #ffd700, #00f0ff);
-    background-size: 600% 600%;
-    animation: neonwave 20s ease infinite;
-    filter: blur(120px);
-    z-index: -1;
-  }
-  @keyframes neonwave {
-    0%{background-position:0% 50%;}
-    50%{background-position:100% 50%;}
-    100%{background-position:0% 50%;}
-  }
-
   .container {
-    max-width: 1100px; margin: 28px auto; padding: 16px 24px 48px;
-    position: relative;
-    box-sizing: border-box;
-    background: var(--panel);
-    border-radius: 20px;
-    box-shadow: 0 0 24px rgba(0,255,255,0.1);
+    max-width: 900px;
+    margin: auto;
+    background: rgba(255,255,255,0.05);
+    border-radius: 12px;
+    padding: 20px;
   }
-
-  .watermark {
-    position: fixed; right: 18px; bottom: 18px; padding: 10px 18px;
-    border-radius: 20px;
-    background: linear-gradient(90deg, rgba(255,215,0,0.18), rgba(0,144,255,0.12));
-    color: var(--accent); font-weight: 800; letter-spacing: 2px; font-size: 16px;
-    box-shadow: 0 10px 40px rgba(255,215,0,0.6);
-    z-index: 9999; user-select:none;
-  }
-
-  header {
-    display: flex; gap: 18px; align-items: center; flex-wrap: wrap;
-  }
-
-  .logo {
-    width: 72px; height: 72px; border-radius: 16px;
-    background: linear-gradient(135deg, var(--neon1), var(--neon2));
-    display: flex; align-items: center; justify-content: center;
-    font-weight: 900; font-size: 24px; color: black;
-    box-shadow: 0 8px 40px rgba(0,0,0,0.8), 0 0 40px rgba(0,240,255,0.2);
-    user-select:none;
-  }
-
-  h1 {
-    margin: 0; font-size: 34px;
-    text-shadow: 0 0 18px rgba(0,240,255,0.12);
-  }
-
-  p.lead {
-    margin: 0; color: var(--muted);
-    font-weight: 500;
-  }
-
-  .hero {
-    margin-top: 28px; padding: 28px;
-    border-radius: 20px;
-    background: linear-gradient(180deg, rgba(255,255,255,0.06), transparent);
-    box-shadow: inset 0 2px 6px rgba(255,255,255,0.08), 0 16px 64px rgba(0,0,0,0.9);
-    display: flex;
-    gap: 28px;
-    align-items: center;
-    flex-wrap: wrap;
-  }
-
-  .welcome {
-    flex: 1 1 320px;
-    min-width: 280px;
-  }
-
-  .welcome h2 {
-    margin: 0;
-    font-size: 26px;
-    color: var(--accent);
-    text-shadow: 0 0 28px rgba(255,215,0,0.18);
-  }
-
-  .welcome p {
-    margin: 12px 0 0 0;
-    color: var(--muted);
-    font-size: 16px;
-    line-height: 1.4;
-  }
-
-  .cta {
-    display: flex;
-    gap: 16px;
-    margin-top: 22px;
-    flex-wrap: wrap;
-  }
-
-  .btn {
-    padding: 14px 22px;
-    border-radius: 14px;
-    border: 1px solid rgba(255,255,255,0.06);
-    background: linear-gradient(90deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
-    cursor: pointer;
-    color: inherit;
-    font-weight: 700;
-    text-decoration: none;
-    display: inline-flex;
-    gap: 14px;
-    align-items: center;
-    user-select:none;
-    transition: box-shadow 0.3s ease, transform 0.15s ease;
-    box-shadow: 0 6px 20px rgba(0,0,0,0.5);
-  }
-  .btn:hover, .btn:focus {
-    box-shadow: 0 0 28px 4px var(--neon1);
-    transform: scale(1.04);
-  }
-
-  .btn.neon {
-    box-shadow: 0 8px 36px rgba(0,240,255,0.1), 0 0 36px var(--neon1);
-    border: 1px solid rgba(0,240,255,0.16);
-  }
-
-  .btn.vice {
-    box-shadow: 0 8px 36px rgba(255,0,212,0.12), 0 0 36px var(--neon2);
-    border: 1px solid rgba(255,0,212,0.18);
-  }
-
-  .social-btn {
-    width: 48px;
-    height: 48px;
-    border-radius: 14px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 800;
-    font-size: 18px;
-    color: white;
-  }
-
-  .social-tik {
-    background: linear-gradient(135deg,#000 0%, #111 40%, #fe2c55 60%);
-    box-shadow: 0 12px 40px rgba(254,44,85,0.24);
-  }
-
-  .social-yt {
-    background: linear-gradient(135deg,#ff0000,#c40000);
-    box-shadow: 0 12px 40px rgba(255,0,0,0.24);
-  }
-
-  main {
-    margin-top: 28px;
-    display: grid;
-    grid-template-columns: 1fr 360px;
-    gap: 28px;
-  }
-
-  .card {
-    background: var(--panel);
-    padding: 22px;
-    border-radius: 18px;
-    min-height: 90px;
-    box-shadow: 0 8px 36px rgba(0,0,0,0.8);
-    border: 1px solid rgba(255,255,255,0.05);
-    box-sizing: border-box;
-  }
-
-  .section-title {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 14px;
-  }
-
-  label {
-    font-size: 14px;
-    color: var(--muted);
-  }
-
-  input[type=text], input[type=password], textarea, select {
+  input, select, textarea, button {
     width: 100%;
-    padding: 12px;
-    border-radius: 14px;
-    border: 1px solid rgba(255,255,255,0.04);
-    background: transparent;
-    color: inherit;
-    outline: none;
-    box-sizing: border-box;
+    padding: 10px;
+    margin-top: 6px;
+    margin-bottom: 12px;
+    border-radius: 6px;
+    border: none;
     font-size: 16px;
   }
-
-  textarea {
-    min-height: 110px;
-    resize: vertical;
+  button {
+    cursor: pointer;
+    background: #00f0ff;
+    color: black;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
   }
-
-  .muted {
-    font-size: 13px;
-    color: var(--muted);
+  button:hover {
+    background: #00b0cc;
   }
-
-  .list {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
+  .hidden {
+    display: none;
   }
-
-  .item {
-    padding: 14px;
-    border-radius: 16px;
-    background: linear-gradient(180deg, rgba(255,255,255,0.02), transparent);
-    border: 1px solid rgba(255,255,255,0.03);
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: 14px;
-    word-break: break-word;
-    font-size: 15px;
-  }
-
-  .item .meta {
-    font-size: 13px;
-    color: var(--muted);
-    user-select:none;
-  }
-
-  footer {
-    margin-top: 36px;
+  .header {
     text-align: center;
-    color: var(--muted);
+    margin-bottom: 20px;
+  }
+  .links-list, .comments-list {
+    margin-top: 10px;
+  }
+  .item {
+    background: rgba(0,255,255,0.1);
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 8px;
+    word-break: break-word;
+  }
+  .watermark {
+    position: fixed;
+    bottom: 12px;
+    right: 12px;
+    color: #ffd700;
+    font-weight: bold;
     font-size: 14px;
-    padding: 24px;
     user-select:none;
   }
-
-  .tag {
-    padding: 8px 16px;
-    border-radius: 999px;
-    font-weight: 800;
-    background: linear-gradient(90deg, var(--neon1), var(--neon2));
-    color: #001;
-    box-shadow: 0 10px 50px rgba(0,240,255,0.12);
-    user-select:none;
-  }
-
-  /* Responsive */
-
-  @media (max-width: 1000px) {
-    main {
-      grid-template-columns: 1fr;
-      padding-bottom: 80px;
-    }
-    .container {
-      padding: 18px 20px;
-    }
-    .hero {
-      flex-direction: column;
-      align-items: stretch;
-      padding: 24px 24px 28px;
-    }
-    .welcome {
-      min-width: 100%;
-    }
-  }
-
 </style>
 </head>
 <body>
-<div class="watermark">JOZETHCPM1</div>
-<div class="container" role="main" aria-label="Sitio web JOZETHCPM1 Neon Hub">
-  <header>
-    <div class="logo" aria-label="Logo JOZETHCPM1">JCP</div>
-    <div>
+  <div class="watermark">JOZETHCPM1</div>
+  <div class="container">
+    <div class="header">
       <h1>JOZETHCPM1 — Neon Hub Mejorado</h1>
-      <p class="lead">Descarga APKs y scripts, comparte enlaces y revisa archivos en VirusTotal antes de usar. Sígueme en TikTok y YouTube.</p>
-    </div>
-    <div style="margin-left:auto; display:flex; gap:12px; align-items:center;">
-      <div class="tag" aria-label="Etiqueta Neon">NEON</div>
-    </div>
-  </header>
-
-  <section class="hero" aria-label="Bienvenida y enlaces sociales">
-    <div class="welcome">
-      <h2>Bienvenido a mi hub — JOZETHCPM1</h2>
-      <p class="muted">Descarga y comparte APKs y scripts con seguridad. Escanea los archivos con VirusTotal antes de instalarlos.</p>
-      <div class="cta">
-        <a class="btn neon" href="https://www.tiktok.com/@jozethcpm0" target="_blank" rel="noopener noreferrer" aria-label="TikTok de JOZETHCPM1">
-          <span class="social-btn social-tik" aria-hidden="true">TikTok</span>
-          <span>Ver TikTok</span>
-        </a>
-
-        <a class="btn vice" href="https://www.youtube.com/@JOZETHCPM1" target="_blank" rel="noopener noreferrer" aria-label="YouTube de JOZETHCPM1">
-          <span class="social-btn social-yt" aria-hidden="true">YouTube</span>
-          <span>Ver YouTube</span>
-        </a>
-
-        <a class="btn" href="https://www.virustotal.com/gui/home/upload" target="_blank" rel="noopener noreferrer" aria-label="Escanear en VirusTotal">
-          Escanear APK en VirusTotal
-        </a>
-      </div>
+      <p>Inicia sesión, comparte enlaces APK y scripts, y comenta seguro.</p>
     </div>
 
-    <div style="width:360px; max-width:100%;">
-      <div class="card" aria-label="Área de inicio de sesión">
-        <div class="section-title"><strong>Iniciar sesión</strong></div>
-        <div id="login-area">
-          <label for="user">Usuario</label>
-          <input type="text" id="user" placeholder="Usuario" autocomplete="username" aria-required="true" />
-          <label for="pass" style="margin-top:8px;">Contraseña</label>
-          <input type="password" id="pass" placeholder="Contraseña" autocomplete="current-password" aria-required="true" />
-          <div style="display:flex;gap:10px;margin-top:12px;">
-            <button class="btn neon" id="login-btn" aria-label="Botón iniciar sesión">Entrar</button>
-            <button class="btn" id="logout-btn" style="display:none" aria-label="Botón cerrar sesión">Salir</button>
-          </div>
-          <div class="muted" style="margin-top:12px" aria-live="polite" id="login-info">
-            Usuario admin: <strong>JOZETHCPM1</strong>
-          </div>
-        </div>
+    <!-- Login -->
+    <div id="login-section">
+      <label for="login-user">Usuario</label>
+      <input type="text" id="login-user" placeholder="Usuario" autocomplete="username" />
+      <label for="login-pass">Contraseña</label>
+      <input type="password" id="login-pass" placeholder="Contraseña" autocomplete="current-password" />
+      <button id="login-btn">Entrar</button>
+    </div>
+
+    <!-- Panel tras login -->
+    <div id="panel" class="hidden">
+      <p>Bienvenido <strong id="current-user"></strong>! <button id="logout-btn" style="width:auto; padding:6px 12px; margin-left:10px; background:#ff0044; color:white;">Salir</button></p>
+
+      <!-- Subir enlaces -->
+      <h2>Subir enlace</h2>
+      <label for="link-type">Tipo</label>
+      <select id="link-type">
+        <option value="apk">APK</option>
+        <option value="gg">Script (GG)</option>
+      </select>
+      <label for="link-url">Enlace (URL)</label>
+      <input type="text" id="link-url" placeholder="https://..." />
+      <label for="link-desc">Descripción</label>
+      <input type="text" id="link-desc" placeholder="Breve descripción" />
+      <button id="add-link-btn">Agregar enlace</button>
+
+      <div class="links-list" aria-live="polite" id="links-list">
+        <!-- Enlaces agregados aquí -->
       </div>
 
-      <div class="card" style="margin-top:18px;" aria-label="Formulario para subir enlaces">
-        <div class="section-title"><strong>Subir enlace</strong></div>
-        <label for="link-type">Tipo</label>
-        <select id="link-type" aria-required="true">
-          <option value="apk">APK</option>
-          <option value="gg">Script (GG)</option>
-        </select>
-        <label for="link-url" style="margin-top:8px;">Enlace (URL)</label>
-        <input type="text" id="link-url" placeholder="https://..." autocomplete="off" aria-required="true" />
-        <label for="link-desc" style="margin-top:8px;">Descripción</label>
-        <input type="text" id="link-desc" placeholder="Breve descripción" autocomplete="off" />
-        <div style="display:flex;gap:10px;margin-top:12px;">
-          <button class="btn neon" id="add-link" aria-label="Agregar enlace">Agregar</button>
-          <button class="btn" id="clear-links" aria-label="Limpiar formulario">Limpiar</button>
-        </div>
-        <div class="muted" style="margin-top:10px" aria-live="polite">Comparte solo enlaces válidos. Se bloquearán links sospechosos (pornografía o sitios maliciosos).</div>
+      <!-- Comentarios -->
+      <h2>Comentarios</h2>
+      <label for="comment-name">Nombre</label>
+      <input type="text" id="comment-name" placeholder="Tu nombre" />
+      <label for="comment-text">Comentario</label>
+      <textarea id="comment-text" placeholder="Comparte tu opinión..."></textarea>
+      <button id="post-comment-btn">Publicar comentario</button>
+
+      <div class="comments-list" aria-live="polite" id="comments-list">
+        <!-- Comentarios aquí -->
       </div>
     </div>
-  </section>
+  </div>
 
-  <main>
-    <div>
-      <div class="card" id="comments-card" aria-label="Sección de comentarios">
-        <div class="section-title"><strong>Comentarios</strong><span class="muted"> — Sé amable. Los links sospechosos serán bloqueados.</span></div>
+<script>
+  // Constantes admin
+  const ADMIN_USER = "JOZETHCPM1";
+  const ADMIN_PASS = "123456";
 
-        <div id="new-comment">
-          <label for="comment-name">Nombre</label>
-          <input type="text" id="comment-name" placeholder="Tu nombre" autocomplete="off" aria-required="true" />
-          <label for="comment-text" style="margin-top:8px;">Comentario</label>
-          <textarea id="comment-text" placeholder="Comparte tu opinión..." aria-required="true"></textarea>
-          <div style="display:flex;gap:10px;margin-top:12px;">
-            <button class="btn neon" id="post-comment" aria-label="Publicar comentario">Publicar</button>
-            <button class="btn" id="clear-comment" aria-label="Limpiar comentario">Limpiar</button>
-          </div>
-          <div class="muted" style="margin-top:10px" aria-live="polite">Nota: se bloquean comentarios con pornografía y links peligrosos automáticamente.</div>
-        </div>
+  // Elementos DOM
+  const loginSection = document.getElementById('login-section');
+  const panel = document.getElementById('panel');
+  const loginBtn = document.getElementById('login-btn');
+  const logoutBtn = document.getElementById('logout-btn');
+  const currentUserSpan = document.getElementById('current-user');
 
-        <div style="margin-top:16px" id="comments-list" aria-live="polite" aria-relevant="additions">
-          <!-- comentarios aquí -->
-        </div>
-      </div>
+  const loginUserInput = document.getElementById('login-user');
+  const loginPassInput = document.getElementById('login-pass');
 
-      <div class="card" style="margin-top:20px;" aria-label="Lista de enlaces compartidos">
-        <div class="section-title"><strong>Enlaces compartidos</strong><span class="muted"> — APKs y scripts</span></div>
-        <div id="links-list" class="list" aria-live="polite" aria-relevant="additions"></div>
+  const linkType = document.getElementById('link-type');
+  const linkUrl = document.getElementById('link-url');
+  const linkDesc = document.getElementById('link-desc');
+  const addLinkBtn = document.getElementById('add-link-btn');
+  const linksList = document.getElementById('links-list');
+
+  const commentName = document.getElementById('comment-name');
+  const commentText = document.getElementById('comment-text');
+  const postCommentBtn = document.getElementById('post-comment-btn');
+  const commentsList = document.getElementById('comments-list');
+
+  // Estado
+  let state = {
+    loggedUser: null,
+    links: [],
+    comments: []
+  };
+
+  // Guardar y cargar estado de localStorage
+  function saveState(){
+    localStorage.setItem('jozethcpm1_state', JSON.stringify(state));
+  }
+  function loadState(){
+    const saved = localStorage.getItem('jozethcpm1_state');
+    if(saved){
+      try {
+        state = JSON.parse(saved);
+      } catch(e){
+        console.warn("Error cargando estado:", e);
+      }
+    }
+  }
+
+  // Render enlaces
+  function renderLinks(){
+    linksList.innerHTML = "";
+    if(state.links.length === 0){
+      linksList.textContent = "No hay enlaces aún.";
+      return;
+    }
+    state.links.forEach((l,i) => {
+      const div = document.createElement('div');
+      div.className = "item";
+      div.innerHTML = `<strong>[${l.type.toUpperCase()}]</strong> <a href="${l.url}" target="_blank" rel="noopener noreferrer">${l.url}</a><br><em>${l.desc || ''}</em>`;
+      // Si es admin, agregar botón borrar
+      if(state.loggedUser === ADMIN_USER){
+        const btnDel = document.createElement('button');
+        btnDel.textContent = "Eliminar";
+        btnDel.style = "margin-left:10px; background:#ff0044; color:white; padding:2px 8px; font-size:12px; border:none; border-radius:5px; cursor:pointer;";
+        btnDel.onclick = () => {
+          if(confirm("Eliminar este enlace?")) {
+            state.links.splice(i,1);
+            saveState();
+            renderLinks();
+          }
+        };
+        div.appendChild(btnDel);
+      }
+      linksList.appendChild(div);
+    });
+  }
+
+  // Render comentarios
+  function renderComments(){
+    commentsList.innerHTML = "";
+    if(state.comments.length === 0){
+      commentsList.textContent = "No hay comentarios aún.";
+      return;
+    }
+    state.comments.forEach((c,i) => {
+      const div = document.createElement('div');
+      div.className = "item";
+      div.innerHTML = `<strong>${escapeHtml(c.name)}</strong>: ${escapeHtml(c.text)}`;
+      if(state.loggedUser === ADMIN_USER){
+        const btnDel = document.createElement('button');
+        btnDel.textContent = "Eliminar";
+        btnDel.style = "margin-left:10px; background:#ff0044; color:white; padding:2px 8px; font-size:12px; border:none; border-radius:5px; cursor:pointer;";
+        btnDel.onclick = () => {
+          if(confirm("Eliminar este comentario?")) {
+            state.comments.splice(i,1);
+            saveState();
+            renderComments();
+          }
+        };
+        div.appendChild(btnDel);
+      }
+      commentsList.appendChild(div);
+    });
+  }
+
+  // Escape para evitar HTML malicioso
+  function escapeHtml(text){
+    return text.replace(/[&<>"']/g, function(m){
+      return {'&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;'}[m];
+    });
+  }
+
+  // Validar link no sospechoso
+  function isLinkSuspicious(url){
+    const suspiciousPatterns = [
+      /porn/i,
+      /sex/i,
+      /xxx/i,
+      /bit\.ly/i,
+      /tinyurl\.com/i,
+      /some-random-badsite\.com/i
+      // Agrega más patrones si quieres
+    ];
+    return suspiciousPatterns.some(rx => rx.test(url));
+  }
+
+  // Manejar login
+  loginBtn.onclick = () => {
+    const user = loginUserInput.value.trim();
+    const pass = loginPassInput.value;
+
+    if(user === "" || pass === ""){
+      alert("Por favor completa usuario y contraseña.");
+      return;
+    }
+
+    // Solo admin puede iniciar sesión
+    if(user !== ADMIN_USER){
+      alert("Usuario inválido.");
+      return;
+    }
+    if(pass !== ADMIN_PASS){
+      alert("Contraseña incorrecta.");
+      return;
+    }
+
+    state.loggedUser = user;
+    saveState();
+    updateUIAfterLogin();
+  };
+
+  // Manejar logout
+  logoutBtn.onclick = () => {
+    state.loggedUser = null;
+    saveState();
+    updateUIAfterLogout();
+  };
+
+  // Actualizar UI tras login
+  function updateUIAfterLogin(){
+    loginSection.classList.add('hidden');
+    panel.classList.remove('hidden');
+    currentUserSpan.textContent = state.loggedUser;
+    renderLinks();
+    renderComments();
+  }
+  // UI tras logout
+  function updateUIAfterLogout(){
+    loginSection.classList.remove('hidden');
+    panel.classList.add('hidden');
+    loginUserInput.value = "";
+    loginPassInput.value = "";
+    linksList.innerHTML = "";
+    commentsList.innerHTML = "";
+  }
+
+  // Agregar enlace
+  addLinkBtn.onclick = () => {
+    if(!state.loggedUser){
+      alert("Debes iniciar sesión para agregar enlaces.");
+      return;
+    }
+    const type = linkType.value;
+    const url = linkUrl.value.trim();
+    const desc = linkDesc.value.trim();
+
+    if(url === ""){
+      alert("Ingresa un enlace válido.");
+      return;
+    }
+    try {
+      new URL(url);
+    } catch(e){
+      alert("El enlace no es una URL válida.");
+      return;
+    }
+
+    if(isLinkSuspicious(url)){
+      alert("El enlace contiene palabras sospechosas y no puede ser agregado.");
+      return;
+    }
+
+    // No permitir que otro usuario cree con nombre admin
+    if(state.loggedUser !== ADMIN_USER && (desc.includes(ADMIN_USER) || url.includes(ADMIN_USER))){
+      alert("No está permitido usar nombre admin en enlaces.");
+      return;
+    }
+
+    state.links.push({type, url, desc});
+    saveState();
+    renderLinks();
+
+    // Limpiar inputs
+    linkUrl.value = "";
+    linkDesc.value = "";
+  };
+
+  // Agregar comentario
+  postCommentBtn.onclick = () => {
+    if(!state.loggedUser){
+      alert("Debes iniciar sesión para comentar.");
+      return;
+    }
+    const name = commentName.value.trim();
+    const text = commentText.value.trim();
+
+    if(name === "" || text === ""){
+      alert("Nombre y comentario son obligatorios.");
+      return;
+    }
+
+    if(isLinkSuspicious(text)){
+      alert("El comentario contiene palabras o links sospechosos y no puede ser publicado.");
+      return;
+    }
+
+    state.comments.push({name, text});
+    saveState();
+    renderComments();
+
+    commentName.value = "";
+    commentText.value = "";
+  };
+
+  // Al cargar página
+  window.onload = () => {
+    loadState();
+    if(state.loggedUser === ADMIN_USER){
+      updateUIAfterLogin();
+    } else {
+      updateUIAfterLogout();
+    }
+  };
+</script>
+</body>
+</html>
