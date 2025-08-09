@@ -2,10 +2,10 @@
 <html lang="es">
 <head>
 <meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1" />
 <title>JOZETHCPM1 — Neon Hub</title>
 <style>
-  :root{
+  :root {
     --bg:#040514;
     --panel: rgba(255,255,255,0.03);
     --neon1:#00f0ff;
@@ -14,74 +14,293 @@
     --glass: rgba(255,255,255,0.04);
     --muted: rgba(255,255,255,0.6);
   }
-  html,body{height:100%;margin:0;font-family:Inter,system-ui,Arial,sans-serif;background:
-    radial-gradient(1200px 600px at 10% 10%, rgba(0,240,255,0.06), transparent 8%),
-    radial-gradient(1000px 500px at 90% 90%, rgba(255,0,212,0.05), transparent 8%),
-    var(--bg); color:#e6f7ff; -webkit-font-smoothing:antialiased;}
-  .container{max-width:1100px;margin:28px auto;padding:28px;position:relative;}
-  /* watermark */
-  .watermark{position:fixed;right:18px;bottom:18px;padding:8px 14px;border-radius:10px;
-    background:linear-gradient(90deg, rgba(255,215,0,0.12), rgba(0,144,255,0.05));
-    color:var(--accent); font-weight:700; letter-spacing:1px; box-shadow:0 6px 30px rgba(0,0,0,0.6);
-    z-index:9999; mix-blend-mode:screen; opacity:0.95;}
-  header{display:flex;gap:18px;align-items:center;flex-wrap:wrap;}
-  .logo{width:66px;height:66px;border-radius:12px;
-    background:linear-gradient(135deg,var(--neon1),var(--neon2));display:flex;align-items:center;justify-content:center;font-weight:800;color:#041;
-    color:black; font-size:20px; box-shadow:0 6px 40px rgba(0,0,0,0.6), 0 0 30px rgba(0,240,255,0.06);}
-  h1{margin:0;font-size:28px;text-shadow:0 0 10px rgba(0,240,255,0.08);}
-  p.lead{margin:0;color:var(--muted);}
-
-  .hero{margin-top:22px;padding:22px;border-radius:14px;background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);box-shadow:inset 0 1px 0 rgba(255,255,255,0.02), 0 10px 40px rgba(0,0,0,0.6); display:flex;gap:24px;align-items:center;}
-  .welcome{flex:1;}
-  .welcome h2{margin:0;font-size:22px;color:var(--accent);text-shadow:0 0 18px rgba(255,215,0,0.12);}
-  .welcome p{margin:8px 0 0 0; color:var(--muted);}
-
-  .cta{display:flex;gap:12px;margin-top:14px;}
-  .btn{padding:12px 18px;border-radius:12px;border:1px solid rgba(255,255,255,0.06);background:linear-gradient(90deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));cursor:pointer;color:inherit;font-weight:700;text-decoration:none;display:inline-flex;gap:10px;align-items:center;}
-  .btn.neon{box-shadow:0 6px 30px rgba(0,240,255,0.08), 0 0 30px var(--neon1); border:1px solid rgba(0,240,255,0.12);}
-  .btn.vice{box-shadow:0 6px 30px rgba(255,0,212,0.06), 0 0 30px var(--neon2); border:1px solid rgba(255,0,212,0.14);}
-
-  .social-btn{width:58px;height:58px;border-radius:12px;display:inline-flex;align-items:center;justify-content:center;font-weight:800;font-size:14px;}
-  .social-tik{background:linear-gradient(135deg,#000 0%, #111 40%, #fe2c55 60%); box-shadow:0 8px 30px rgba(254,44,85,0.12);}
-  .social-yt{background:linear-gradient(135deg,#ff0000,#c40000); box-shadow:0 8px 30px rgba(255,0,0,0.12);}
-
-  main{margin-top:18px; display:grid; grid-template-columns: 1fr 360px; gap:20px;}
-  .card{background:var(--panel);padding:16px;border-radius:12px;min-height:80px;box-shadow:0 6px 24px rgba(0,0,0,0.6);border:1px solid rgba(255,255,255,0.03);}
-  .section-title{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;}
-  label{font-size:13px;color:var(--muted);}
-
-  /* forms */
-  input[type=text], input[type=password], textarea, select{
-    width:100%;padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit;outline:none;
-  }
-  textarea{min-height:90px; resize:vertical;}
-  .muted{font-size:13px;color:var(--muted);}
-
-  /* lists */
-  .list{display:flex;flex-direction:column;gap:10px;}
-  .item{padding:10px;border-radius:10px;background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent);border:1px solid rgba(255,255,255,0.02);display:flex;justify-content:space-between;align-items:flex-start;gap:10px;}
-  .item .meta{font-size:12px;color:var(--muted);}
-
-  footer{margin-top:24px;text-align:center;color:var(--muted);font-size:13px;padding:18px;}
-
-  /* neon accents for tags */
-  .tag{padding:6px 10px;border-radius:999px;font-weight:700;background:linear-gradient(90deg,var(--neon1),var(--neon2));color:#001;box-shadow:0 8px 40px rgba(0,240,255,0.06);}
-
-  /* small screens */
-  @media (max-width:980px){
-    main{grid-template-columns:1fr; padding-bottom:60px;}
-    .container{padding:16px;}
+  html, body {
+    height: 100%; margin: 0; font-family: Inter, system-ui, Arial, sans-serif; 
+    background:
+      radial-gradient(1200px 600px at 10% 10%, rgba(0,240,255,0.06), transparent 8%),
+      radial-gradient(1000px 500px at 90% 90%, rgba(255,0,212,0.05), transparent 8%),
+      var(--bg); 
+    color: #e6f7ff; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
   }
 
-  /* subtle animated background lines */
-  .bg-lines{position:fixed;left:0;top:0;width:100%;height:100%;z-index:0;pointer-events:none;mix-blend-mode:overlay;opacity:0.06}
-  .bg-lines::before{content:'';position:absolute;left:-10%;top:0;width:120%;height:2px;background:linear-gradient(90deg,transparent,var(--neon1),transparent);transform:translateY(20%);filter:blur(6px);animation:slide 14s linear infinite}
-  .bg-lines::after{content:'';position:absolute;left:-10%;top:50%;width:120%;height:2px;background:linear-gradient(90deg,transparent,var(--neon2),transparent);transform:translateY(60%);filter:blur(6px);animation:slide 20s linear infinite}
-  @keyframes slide{from{transform:translateX(-10%) translateY(0)}to{transform:translateX(10%) translateY(0)}}
+  .container {
+    max-width: 1100px; margin: 28px auto; padding: 16px 24px 48px;
+    position: relative;
+    box-sizing: border-box;
+  }
 
-  /* small helper */
-  .right{margin-left:auto}
-  .danger{color:#ff7b7b}
+  .watermark {
+    position: fixed; right: 18px; bottom: 18px; padding: 8px 14px;
+    border-radius: 10px;
+    background: linear-gradient(90deg, rgba(255,215,0,0.12), rgba(0,144,255,0.05));
+    color: var(--accent); font-weight: 700; letter-spacing: 1px; 
+    box-shadow: 0 6px 30px rgba(0,0,0,0.6);
+    z-index: 9999; mix-blend-mode: screen; opacity: 0.95;
+    user-select:none;
+  }
+
+  header {
+    display: flex; gap: 18px; align-items: center; flex-wrap: wrap;
+  }
+
+  .logo {
+    width: 66px; height: 66px; border-radius: 12px;
+    background: linear-gradient(135deg, var(--neon1), var(--neon2));
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 800; font-size: 20px;
+    box-shadow: 0 6px 40px rgba(0,0,0,0.6), 0 0 30px rgba(0,240,255,0.06);
+    color: black;
+    user-select:none;
+  }
+
+  h1 {
+    margin: 0; font-size: 28px;
+    text-shadow: 0 0 10px rgba(0,240,255,0.08);
+  }
+
+  p.lead {
+    margin: 0; color: var(--muted);
+  }
+
+  .hero {
+    margin-top: 22px; padding: 22px;
+    border-radius: 14px;
+    background: linear-gradient(180deg, rgba(255,255,255,0.02), transparent);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.02), 0 10px 40px rgba(0,0,0,0.6);
+    display: flex;
+    gap: 24px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .welcome {
+    flex: 1 1 320px;
+    min-width: 280px;
+  }
+
+  .welcome h2 {
+    margin: 0;
+    font-size: 22px;
+    color: var(--accent);
+    text-shadow: 0 0 18px rgba(255,215,0,0.12);
+  }
+
+  .welcome p {
+    margin: 8px 0 0 0;
+    color: var(--muted);
+    font-size: 14px;
+  }
+
+  .cta {
+    display: flex;
+    gap: 12px;
+    margin-top: 14px;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    padding: 12px 18px;
+    border-radius: 12px;
+    border: 1px solid rgba(255,255,255,0.06);
+    background: linear-gradient(90deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+    cursor: pointer;
+    color: inherit;
+    font-weight: 700;
+    text-decoration: none;
+    display: inline-flex;
+    gap: 10px;
+    align-items: center;
+    user-select:none;
+    transition: box-shadow 0.3s ease;
+  }
+
+  .btn:hover {
+    box-shadow: 0 0 12px 2px var(--neon1);
+  }
+
+  .btn.neon {
+    box-shadow: 0 6px 30px rgba(0,240,255,0.08), 0 0 30px var(--neon1);
+    border: 1px solid rgba(0,240,255,0.12);
+  }
+
+  .btn.vice {
+    box-shadow: 0 6px 30px rgba(255,0,212,0.06), 0 0 30px var(--neon2);
+    border: 1px solid rgba(255,0,212,0.14);
+  }
+
+  .social-btn {
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 14px;
+    color: white;
+  }
+
+  .social-tik {
+    background: linear-gradient(135deg,#000 0%, #111 40%, #fe2c55 60%);
+    box-shadow: 0 8px 30px rgba(254,44,85,0.12);
+  }
+
+  .social-yt {
+    background: linear-gradient(135deg,#ff0000,#c40000);
+    box-shadow: 0 8px 30px rgba(255,0,0,0.12);
+  }
+
+  main {
+    margin-top: 18px;
+    display: grid;
+    grid-template-columns: 1fr 360px;
+    gap: 20px;
+  }
+
+  .card {
+    background: var(--panel);
+    padding: 16px;
+    border-radius: 12px;
+    min-height: 80px;
+    box-shadow: 0 6px 24px rgba(0,0,0,0.6);
+    border: 1px solid rgba(255,255,255,0.03);
+    box-sizing: border-box;
+  }
+
+  .section-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+
+  label {
+    font-size: 13px;
+    color: var(--muted);
+  }
+
+  input[type=text], input[type=password], textarea, select {
+    width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid rgba(255,255,255,0.04);
+    background: transparent;
+    color: inherit;
+    outline: none;
+    box-sizing: border-box;
+  }
+
+  textarea {
+    min-height: 90px;
+    resize: vertical;
+  }
+
+  .muted {
+    font-size: 13px;
+    color: var(--muted);
+  }
+
+  .list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .item {
+    padding: 10px;
+    border-radius: 10px;
+    background: linear-gradient(180deg, rgba(255,255,255,0.01), transparent);
+    border: 1px solid rgba(255,255,255,0.02);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 10px;
+    word-break: break-word;
+  }
+
+  .item .meta {
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  footer {
+    margin-top: 24px;
+    text-align: center;
+    color: var(--muted);
+    font-size: 13px;
+    padding: 18px;
+    user-select:none;
+  }
+
+  .tag {
+    padding: 6px 10px;
+    border-radius: 999px;
+    font-weight: 700;
+    background: linear-gradient(90deg, var(--neon1), var(--neon2));
+    color: #001;
+    box-shadow: 0 8px 40px rgba(0,240,255,0.06);
+    user-select:none;
+  }
+
+  /* Responsive */
+
+  @media (max-width: 980px) {
+    main {
+      grid-template-columns: 1fr;
+      padding-bottom: 60px;
+    }
+    .container {
+      padding: 16px;
+    }
+    .hero {
+      flex-direction: column;
+      align-items: stretch;
+    }
+    .welcome {
+      min-width: 100%;
+    }
+  }
+
+  /* Background lines */
+  .bg-lines {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+    mix-blend-mode: overlay;
+    opacity: 0.06;
+  }
+  .bg-lines::before {
+    content: '';
+    position: absolute;
+    left: -10%;
+    top: 0;
+    width: 120%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--neon1), transparent);
+    transform: translateY(20%);
+    filter: blur(6px);
+    animation: slide 14s linear infinite;
+  }
+  .bg-lines::after {
+    content: '';
+    position: absolute;
+    left: -10%;
+    top: 50%;
+    width: 120%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--neon2), transparent);
+    transform: translateY(60%);
+    filter: blur(6px);
+    animation: slide 20s linear infinite;
+  }
+  @keyframes slide {
+    from { transform: translateX(-10%) translateY(0); }
+    to { transform: translateX(10%) translateY(0); }
+  }
 </style>
 </head>
 <body>
@@ -105,14 +324,14 @@
       <p class="muted">Descarga APKs y scripts, comparte enlaces y revisa archivos en VirusTotal antes de usar. Sigue mis redes y únete a la comunidad neon.</p>
 
       <div class="cta">
-        <a class="btn neon" id="btn-tiktok" href="https://www.youtube.com/@JOZETHCPM1" target="_blank" rel="noreferrer" title="TikTok → YouTube">
+        <a class="btn neon" id="btn-tiktok" href="https://www.tiktok.com/@jozethcpm0" target="_blank" rel="noreferrer" title="TikTok">
           <span class="social-btn social-tik">TikTok</span>
-          <span>Ver YouTube</span>
+          <span>Ver TikTok</span>
         </a>
 
-        <a class="btn vice" id="btn-yt" href="https://www.tiktok.com/@jozethcpm0" target="_blank" rel="noreferrer" title="YouTube → TikTok">
+        <a class="btn vice" id="btn-yt" href="https://www.youtube.com/@JOZETHCPM1" target="_blank" rel="noreferrer" title="YouTube">
           <span class="social-btn social-yt">YouTube</span>
-          <span>Ver TikTok</span>
+          <span>Ver YouTube</span>
         </a>
 
         <a class="btn" id="virus-btn" href="https://www.virustotal.com/gui/home/upload" target="_blank" rel="noreferrer" title="Escanear en VirusTotal">
@@ -121,19 +340,21 @@
       </div>
     </div>
 
-    <div style="width:360px;">
+    <div style="width:360px; max-width:100%;">
       <div class="card">
         <div class="section-title"><strong>Iniciar sesión</strong></div>
         <div id="login-area">
           <label>Usuario</label>
-          <input type="text" id="user" placeholder="Usuario" />
+          <input type="text" id="user" placeholder="Usuario" autocomplete="username" />
           <label style="margin-top:8px;">Contraseña</label>
-          <input type="password" id="pass" placeholder="Contraseña" />
+          <input type="password" id="pass" placeholder="Contraseña" autocomplete="current-password" />
           <div style="display:flex;gap:8px;margin-top:10px;">
             <button class="btn neon" id="login-btn">Entrar</button>
             <button class="btn" id="logout-btn" style="display:none">Salir</button>
           </div>
-          <div class="muted" style="margin-top:10px">Admin: <strong>JOZETHCPM1</strong> / <strong>123456</strong></div>
+          <div class="muted" style="margin-top:10px">
+            Admin: <strong>JOZETHCPM1</strong> (contraseña oculta)
+          </div>
         </div>
       </div>
 
@@ -209,265 +430,9 @@
 </div>
 
 <script>
-/* Simple offline-first app storing data in localStorage.
-   Features:
-   - Users: basic login using localStorage. Admin: JOZETHCPM1 / 123456
-   - Comments: auto-detects porn keywords and suspicious links; blocks them.
-   - Links list: add APK / GG script links; admin can delete.
-   - Export / Import JSON for backup.
-*/
-
 const ADMIN_USER = "JOZETHCPM1";
 const ADMIN_PASS = "123456";
 
 const LS_KEY = "jozethcpm1_data_v1";
 let state = {
-  users: [{user: ADMIN_USER, pass: ADMIN_PASS, role:"admin"}],
-  comments: [],
-  links: []
-};
-
-// load stored
-function loadState(){
-  try{
-    const raw = localStorage.getItem(LS_KEY);
-    if(raw) state = JSON.parse(raw);
-  }catch(e){console.error("load",e)}
-}
-function saveState(){
-  localStorage.setItem(LS_KEY, JSON.stringify(state));
-}
-
-loadState();
-
-/* Utilities */
-function el(q){return document.querySelector(q)}
-function els(q){return Array.from(document.querySelectorAll(q))}
-function sanitizeText(s){ return String(s||"").replace(/</g,"&lt;").replace(/>/g,"&gt;"); }
-
-/* Suspicious detection */
-const pornKeywords = ["porno","porn","xxx","sex","adult","hentai","erotic","cams","xxxvideo"];
-const suspiciousDomains = ["bit.ly","tinyurl","anonfiles","mediafire","dropbox.com","discord.gg"];
-const allowedDomains = ["youtube.com","youtu.be","tiktok.com","virustotal.com","github.com","drive.google.com","mega.nz","googleusercontent.com"];
-
-function containsUrl(text){
-  return /https?:\/\//i.test(text);
-}
-function extractUrls(text){
-  const re = /https?:\/\/[^\s]+/ig; return (text.match(re) || []);
-}
-function isSuspiciousUrl(url){
-  const u = url.toLowerCase();
-  for(const k of pornKeywords) if(u.includes(k)) return true;
-  for(const d of suspiciousDomains) if(u.includes(d)) return true;
-  // if domain not in allowed and contains top-level suspicious patterns, mark suspicious
-  const domain = (new URL(u)).hostname.replace("www.","");
-  if(!allowedDomains.some(ad=>domain.includes(ad))) {
-    // allow common cdn/file hosts but flag if path looks like .exe/.bat or double encoded
-    if(u.match(/(\.exe|\.bat|\.scr|\.cmd|doubleclick|malware|ransom)/i)) return true;
-    // otherwise treat as potentially suspicious but not outright blocked
-    return false;
-  }
-  return false;
-}
-function containsPornKeywords(text){
-  const s = text.toLowerCase();
-  return pornKeywords.some(k => s.includes(k));
-}
-
-/* UI wiring */
-const loginBtn = el("#login-btn"), logoutBtn = el("#logout-btn");
-const userInput = el("#user"), passInput = el("#pass");
-let currentUser = localStorage.getItem("jc_current_user") || null;
-function updateAuthUI(){
-  if(currentUser){
-    el("#login-area").querySelectorAll("input,button").forEach(i=>i.style.display="none");
-    logoutBtn.style.display="inline-flex";
-    logoutBtn.before(document.createElement("div"));
-    logoutBtn.previousSibling.textContent = "Conectado: " + currentUser;
-    logoutBtn.previousSibling.style.marginRight = "8px";
-    logoutBtn.previousSibling.className = "muted";
-  } else {
-    // show login inputs
-    const prefix = el("#login-area");
-    prefix.querySelectorAll("input").forEach(i=>i.style.display="block");
-    loginBtn.style.display="inline-flex";
-    logoutBtn.style.display="none";
-    const prev = logoutBtn.previousSibling;
-    if(prev && prev.className==="muted") prev.remove();
-  }
-}
-updateAuthUI();
-
-loginBtn.addEventListener("click", ()=>{
-  const u = (userInput.value||"").trim();
-  const p = (passInput.value||"").trim();
-  if(!u || !p) return alert("Ingresa usuario y contraseña.");
-  // check in state.users
-  const found = state.users.find(x=> x.user.toLowerCase()===u.toLowerCase() && x.pass===p);
-  if(found){
-    currentUser = found.user;
-    localStorage.setItem("jc_current_user", currentUser);
-    alert("Bienvenido " + currentUser);
-    renderAll();
-    updateAuthUI();
-  } else {
-    // allow sign-up (non-admin) if not found
-    if(confirm("Usuario no encontrado. ¿Crear cuenta con estas credenciales?")) {
-      state.users.push({user: u, pass: p, role: "user"});
-      saveState();
-      currentUser = u;
-      localStorage.setItem("jc_current_user", currentUser);
-      alert("Cuenta creada y conectada como " + u);
-      renderAll(); updateAuthUI();
-    }
-  }
-});
-
-logoutBtn.addEventListener("click", ()=>{
-  localStorage.removeItem("jc_current_user");
-  currentUser = null;
-  alert("Sesión cerrada.");
-  updateAuthUI();
-  renderAll();
-});
-
-/* Comments handling */
-function renderComments(){
-  const box = el("#comments-list"); box.innerHTML = "";
-  if(state.comments.length===0){
-    box.innerHTML = "<div class='muted'>Aún no hay comentarios. Sé el primero.</div>";
-    return;
-  }
-  state.comments.slice().reverse().forEach((c, idx)=>{
-    const div = document.createElement("div"); div.className="item";
-    const left = document.createElement("div");
-    left.innerHTML = "<strong>"+sanitizeText(c.name)+"</strong><div class='meta'>"+sanitizeText(c.date)+"</div><div style='margin-top:6px'>"+sanitizeText(c.text).replace(/\\n/g,'<br>')+"</div>";
-    const right = document.createElement("div");
-    if(currentUser && isAdmin(currentUser)){
-      const del = document.createElement("button"); del.className="btn danger"; del.textContent="Eliminar";
-      del.addEventListener("click", ()=>{
-        if(confirm("Eliminar comentario?")) {
-          state.comments.splice(state.comments.indexOf(c),1); saveState(); renderAll();
-        }
-      });
-      right.appendChild(del);
-    }
-    div.appendChild(left); div.appendChild(right);
-    box.appendChild(div);
-  });
-}
-
-el("#post-comment").addEventListener("click", ()=>{
-  const name = (el("#comment-name").value||"Anónimo").trim();
-  const text = (el("#comment-text").value||"").trim();
-  if(!text) return alert("Escribe un comentario.");
-  // detect porn keywords
-  if(containsPornKeywords(text)) return alert("Comentario bloqueado: contiene palabras no permitidas.");
-  // check urls
-  const urls = extractUrls(text);
-  for(const u of urls){
-    try{
-      if(isSuspiciousUrl(u)) return alert("Comentario bloqueado: enlace sospechoso o no permitido.");
-    }catch(e){ return alert("Comentario bloqueado: URL inválida."); }
-  }
-  const comment = {name, text, date: new Date().toLocaleString()};
-  state.comments.push(comment); saveState(); el("#comment-text").value=""; renderComments();
-  alert("Comentario publicado.");
-});
-
-/* Links handling */
-function renderLinks(){
-  const box = el("#links-list"); box.innerHTML = "";
-  if(state.links.length===0){ box.innerHTML = "<div class='muted'>No hay enlaces compartidos.</div>"; return; }
-  state.links.slice().reverse().forEach((L)=>{
-    const div = document.createElement("div"); div.className="item";
-    const left = document.createElement("div");
-    left.innerHTML = "<strong>"+sanitizeText(L.type.toUpperCase())+"</strong> <div class='meta'>"+sanitizeText(L.desc||"")+"</div><div style='margin-top:6px'><a href='"+sanitizeText(L.url)+"' target='_blank' rel='noreferrer'>"+sanitizeText(L.url)+"</a></div>";
-    const right = document.createElement("div");
-    const vt = document.createElement("a"); vt.className="btn"; vt.textContent="VirusTotal"; vt.href="https://www.virustotal.com/gui/home/upload"; vt.target="_blank"; vt.rel="noreferrer";
-    right.appendChild(vt);
-    if(currentUser && isAdmin(currentUser)){
-      const del = document.createElement("button"); del.className="btn danger"; del.textContent="Eliminar";
-      del.addEventListener("click", ()=>{
-        if(confirm("Eliminar enlace?")) { state.links.splice(state.links.indexOf(L),1); saveState(); renderAll(); }
-      });
-      right.appendChild(del);
-    }
-    div.appendChild(left); div.appendChild(right);
-    box.appendChild(div);
-  });
-}
-
-el("#add-link").addEventListener("click", ()=>{
-  const type = el("#link-type").value;
-  const url = (el("#link-url").value||"").trim();
-  const desc = el("#link-desc").value||"";
-  if(!url) return alert("Ingresa la URL.");
-  // detect suspicious
-  try{
-    const urls = extractUrls(url);
-    if(urls.length===0) throw "no url";
-    for(const u of urls){
-      if(isSuspiciousUrl(u)) return alert("Enlace bloqueado: sospechoso o no permitido.");
-      if(containsPornKeywords(u)) return alert("Enlace bloqueado: contenido no permitido.");
-    }
-  }catch(e){ return alert("Enlace inválido. Asegúrate de incluir https://"); }
-  const L = {type, url, desc, date: new Date().toLocaleString(), owner: currentUser||"anon"};
-  state.links.push(L); saveState(); el("#link-url").value=""; el("#link-desc").value=""; renderLinks();
-  alert("Enlace agregado.");
-});
-
-el("#clear-links").addEventListener("click", ()=>{
-  if(confirm("Eliminar todos los enlaces locales? (admin puede recuperarlos si exportó)")) {
-    state.links=[]; saveState(); renderAll();
-  }
-});
-
-/* export / import */
-el("#export-data").addEventListener("click", ()=>{
-  const blob = new Blob([JSON.stringify(state, null, 2)], {type:"application/json"});
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement("a"); a.href=url; a.download="jozethcpm1_data.json"; a.click(); URL.revokeObjectURL(url);
-});
-el("#import-data").addEventListener("click", ()=> el("#import-file").click());
-el("#import-file").addEventListener("change", (ev)=>{
-  const f = ev.target.files[0]; if(!f) return;
-  const reader = new FileReader(); reader.onload = ()=> {
-    try{
-      const parsed = JSON.parse(reader.result);
-      if(confirm("¿Reemplazar datos locales con el archivo importado?")) {
-        state = parsed; saveState(); renderAll(); alert("Datos importados.");
-      }
-    }catch(e){ alert("Archivo inválido."); }
-  }; reader.readAsText(f);
-});
-
-/* admin clean */
-el("#admin-clean").addEventListener("click", ()=>{
-  if(!currentUser || !isAdmin(currentUser)) return alert("Solo admin puede ejecutar esto.");
-  if(confirm("Eliminar TODO (comentarios y enlaces)?")) { state.comments=[]; state.links=[]; saveState(); renderAll(); alert("Datos eliminados."); }
-});
-
-/* Import/Export helpers */
-function renderAll(){ renderComments(); renderLinks(); updateAuthUI(); }
-
-/* simple admin checker */
-function isAdmin(u){
-  const found = state.users.find(x=> x.user.toLowerCase()===u.toLowerCase());
-  return found && found.role==="admin";
-}
-
-/* initial render */
-renderAll();
-
-/* small UX helpers */
-el("#clear-comment").addEventListener("click", ()=>{ el("#comment-name").value=""; el("#comment-text").value=""; });
-el("#btn-tiktok").addEventListener("click", ()=>{ /* opens YouTube link via anchor href */ });
-el("#btn-yt").addEventListener("click", ()=>{ /* opens TikTok link via anchor href */ });
-
-/* Provide a small demo account info console log */
-console.log("App ready. Admin:", ADMIN_USER, " / pass:", ADMIN_PASS);
-</script>
-</body>
-</html>
+  users: [{user: ADMIN_USER, pass: ADMIN_PASS, role:"admin
