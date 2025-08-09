@@ -9,4 +9,4 @@ Instrucciones rápidas:
    - Subir index.html (puedes renombrar a index.html).
    - En Settings → Pages, seleccionar main / root.
    - Acceder a https://TU-USUARIO.github.io/NOMBRE-REPO
-Admin: JOZETHCPM1 / 123456
+Admin: JOZETHCPM1
