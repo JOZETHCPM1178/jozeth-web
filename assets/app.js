@@ -1,6 +1,6 @@
 const data = {
     apps: [
-        { name: "App Ejemplo", img: "https://via.placeholder.com/300x200", url: "https://example.com/app.apk", date: "2025-08-13" }
+        { name: "Ishiruka", img: "https://github.com/JOZETHCPM1178/jozeth-web/raw/main/assets/icon.png", url: "https://www.mediafire.com/file/o4zfia09jjve16v/Ishiruka_Ishiruka_v16.apk/file", date: "2025-08-14" }
     ],
     games: [
         { name: "Juego Ejemplo", img: "https://via.placeholder.com/300x200", url: "https://example.com/game.apk", date: "2025-08-12" }
