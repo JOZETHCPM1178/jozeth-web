@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JOZETHCPM1 APK Hub</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<header>
+    <h1>JOZETHCPM1 APK Hub</h1>
+    <div class="socials">
+        <a href="https://www.youtube.com/@JOZETHCPM1" target="_blank"><img src="assets/youtube.png" alt="YouTube"></a>
+        <a href="https://www.tiktok.com/@jozethcpm0?is_from_webapp=1&sender_device=pc" target="_blank"><img src="assets/tiktok.png" alt="TikTok"></a>
+    </div>
+</header>
+
+<nav>
+    <button class="tab-btn" onclick="openTab('apps')">Apps</button>
+    <button class="tab-btn" onclick="openTab('games')">Juegos</button>
+    <button class="tab-btn" onclick="openTab('files')">Archivos</button>
+</nav>
+
+<input type="text" id="search" placeholder="Buscar por nombre..." oninput="searchItems()">
+
+<div id="apps" class="tab-content"></div>
+<div id="games" class="tab-content" style="display:none;"></div>
+<div id="files" class="tab-content" style="display:none;"></div>
+
+<script src="assets/app.js"></script>
+</body>
+</html>
