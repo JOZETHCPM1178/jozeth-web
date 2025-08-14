@@ -4,6 +4,7 @@ const data = {
     ],
     games: [
         { name: "Juego Ejemplo", img: "https://via.placeholder.com/300x200", url: "https://example.com/game.apk", date: "2025-08-12" }
+        { name: "Resident evil 4", img: "https://github.com/JOZETHCPM1178/jozeth-web/raw/main/assets/resident.png", url: "https://www.mediafire.com/file/yimnvpsek5d1nl2/Resident_Evil_4_-_Wii_Edition_%2528USA%2529.nkit.7z/file", date: "2025-08-14"}
     ],
     files: [
         { name: "Archivo Ejemplo", img: "https://via.placeholder.com/300x200", url: "https://example.com/file.zip", date: "2025-08-11" }
