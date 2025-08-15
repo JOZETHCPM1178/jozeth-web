@@ -3,11 +3,11 @@ const data = {
         { name: "Ishiruka", img: "https://github.com/JOZETHCPM1178/jozeth-web/raw/main/assets/icon.png", url: "https://www.mediafire.com/file/o4zfia09jjve16v/Ishiruka_Ishiruka_v16.apk/file", date: "2025-08-14" }
     ],
     games: [
-        { name: "HACK RESIDENT EVIL4", img: "https://github.com/JOZETHCPM1178/jozeth-web/raw/main/assets/resident.png", url: "https://www.mediafire.com/file/sef6qxi7mhaezeh/CHEATS_RESIDENT_EVIL_4.7z/file", date: "2025-08-14" },
+        { name: "", img: "", url: "", date: "2025-08-14" },
         { name: "Resident evil 4", img: "https://github.com/JOZETHCPM1178/jozeth-web/raw/main/assets/resident.png", url: "https://www.mediafire.com/file/yimnvpsek5d1nl2/Resident_Evil_4_-_Wii_Edition_%2528USA%2529.nkit.7z/file", date: "2025-08-14"}
     ],
     files: [
-        { name: "Archivo Ejemplo", img: "https://via.placeholder.com/300x200", url: "https://example.com/file.zip", date: "2025-08-11" }
+        { name: "HACK RESIDENT EVIL4", img: "https://github.com/JOZETHCPM1178/jozeth-web/raw/main/assets/resident.png", url: "https://www.mediafire.com/file/sef6qxi7mhaezeh/CHEATS+RESIDENT+EVIL+4.7z/file", date: "2025-08-14" }
     ]
 };
 
