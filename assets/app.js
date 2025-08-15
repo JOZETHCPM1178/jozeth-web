@@ -22,7 +22,7 @@ function renderTab(tab) {
         card.className = "card";
         card.innerHTML = `<img src="${item.img}" alt="${item.name}">
                           <h3>${item.name}</h3>
-                          <a class="download-btn" href="${item.url}" target="_blank">Descargar</a>`;
+                          <a class="download-btn" href="${item.url}" target="_blank">Visitar Sitio</a>`;
         container.appendChild(card);
     });
 }
