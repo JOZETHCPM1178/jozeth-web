@@ -3,7 +3,7 @@ const data = {
         { name: "Ishiruka", img: "https://github.com/JOZETHCPM1178/jozeth-web/raw/main/assets/icon.png", url: "https://www.mediafire.com/file/o4zfia09jjve16v/Ishiruka_Ishiruka_v16.apk/file", date: "2025-08-14" }
     ],
     games: [
-        { name: "", img: "", url: "", date: "2025-08-14" },
+        { name: "Drift Max Pro", img: "https://github.com/JOZETHCPM1178/jozeth-web/raw/main/assets/drift.png", url: "https://www.mediafire.com/file/89t5unkkc89ql0a/drift-max-pro-mod_2.5.89-an1.com.apk/file", date: "2025-08-14" },
         { name: "Resident evil 4", img: "https://github.com/JOZETHCPM1178/jozeth-web/raw/main/assets/resident.png", url: "https://www.mediafire.com/file/yimnvpsek5d1nl2/Resident_Evil_4_-_Wii_Edition_%2528USA%2529.nkit.7z/file", date: "2025-08-14"}
     ],
     files: [
