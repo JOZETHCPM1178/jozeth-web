@@ -1,7 +1,7 @@
 const data = {
     apps: [
         { name: "Ishiruka", img: "https://github.com/JOZETHCPM1178/jozeth-web/raw/main/assets/icon.png", url: "https://www.mediafire.com/file/o4zfia09jjve16v/Ishiruka_Ishiruka_v16.apk/file", date: "2025-08-14" },
-        { name: "MT Manager", img
+        { name: "MT Manager", img: "https://github.com/JOZETHCPM1178/jozeth-web/raw/main/assets/MTMANAGER.png", url: "https://www.mediafire.com/file/qvtjqahtjc5dr7p/MT_Manager_2.15.7-clone.apk/file", date: "2025-08-15"}
     ],
     games: [
         { name: "Drift Max Pro", img: "https://github.com/JOZETHCPM1178/jozeth-web/raw/main/assets/drift.png", url: "https://www.mediafire.com/file/89t5unkkc89ql0a/drift-max-pro-mod_2.5.89-an1.com.apk/file", date: "2025-08-14" },
