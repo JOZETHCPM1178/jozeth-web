@@ -10,7 +10,11 @@ const data = {
     ],
     files: [
         { name: "HACK RESIDENT EVIL4", img: "https://github.com/JOZETHCPM1178/jozeth-web/raw/main/assets/resident.png", url: "https://www.mediafire.com/file/sef6qxi7mhaezeh/CHEATS+RESIDENT+EVIL+4.7z/file", date: "2025-08-14" }
+    ],
+    Videos: [
+        { name: "Prueba", img: "", url: "", date: "2025-08-15"}
     ]
+        
 };
 
 function renderTab(tab) {
