@@ -25,8 +25,8 @@ function loadApps(filter = 'all', searchTerm = '') {
     if (filteredApps.length === 0) {
         grid.innerHTML = `
             <div style="grid-column:1/-1; text-align:center; padding:3rem;">
-                <i class="fas fa-search" style="font-size:3rem; color:var(--gray);"></i>
-                <p style="color:var(--gray); margin-top:1rem;">No se encontraron apps con ese nombre</p>
+                <i class="fas fa-search" style="font-size:3rem; color:#9ca3af;"></i>
+                <p style="color:#9ca3af; margin-top:1rem;">No se encontraron apps con ese nombre</p>
             </div>
         `;
         return;
@@ -77,7 +77,17 @@ function searchApps() {
 
 // Inicializar
 document.addEventListener('DOMContentLoaded', () => {
-    loadApps('all');
+    // Verificar que appsDatabase existe
+    if (typeof appsDatabase !== 'undefined') {
+        loadApps('all');
+    } else {
+        document.getElementById('appsGrid').innerHTML = `
+            <div style="grid-column:1/-1; text-align:center; padding:3rem; color:#ff4444;">
+                <i class="fas fa-exclamation-triangle fa-3x"></i>
+                <p>Error: No se pudo cargar la base de datos de apps</p>
+            </div>
+        `;
+    }
     
     // Búsqueda con Enter
     document.getElementById('searchInput')?.addEventListener('keypress', (e) => {
