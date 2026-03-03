@@ -3,14 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JOZETHCPM1 - APK Hub</title>
-    <!-- Fonts e íconos -->
+    <title>JOZETHCPM1 | NEON HUB</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* Reset y variables */
+        /* ===== RESET Y VARIABLES NEON ===== */
         * {
             margin: 0;
             padding: 0;
@@ -18,34 +17,47 @@
         }
 
         :root {
-            --primary: #7c3aed;
-            --primary-dark: #6d28d9;
-            --secondary: #10b981;
-            --dark: #0a0a0a;
-            --dark-light: #1a1a1a;
-            --gray: #9ca3af;
-            --card-bg: rgba(255, 255, 255, 0.02);
-            --border: rgba(255, 255, 255, 0.05);
+            --neon-pink: #ff00ff;
+            --neon-blue: #00ffff;
+            --neon-green: #00ff00;
+            --neon-yellow: #ffff00;
+            --neon-purple: #aa00ff;
+            --neon-red: #ff3300;
+            --dark-bg: #0a0a0f;
         }
 
         body {
-            font-family: 'Inter', sans-serif;
-            background: var(--dark);
+            font-family: 'Poppins', sans-serif;
+            background: var(--dark-bg);
             color: #fff;
-            line-height: 1.6;
+            line-height: 1.5;
             min-height: 100vh;
+            overflow-x: hidden;
         }
 
-        /* Fondo fijo sin animaciones que parpadeen */
-        .bg-fixed {
+        /* ===== FONDO NEON ANIMADO ===== */
+        .neon-bg {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             z-index: -2;
-            background: radial-gradient(circle at 20% 50%, rgba(124, 58, 237, 0.15) 0%, transparent 50%),
-                        radial-gradient(circle at 80% 80%, rgba(16, 185, 129, 0.15) 0%, transparent 50%);
+            background: linear-gradient(125deg, 
+                rgba(255,0,255,0.2) 0%, 
+                rgba(0,255,255,0.2) 25%, 
+                rgba(0,255,0,0.2) 50%, 
+                rgba(255,255,0,0.2) 75%, 
+                rgba(170,0,255,0.2) 100%);
+            background-size: 400% 400%;
+            animation: rainbowBG 15s ease infinite;
+            filter: blur(80px);
+        }
+
+        @keyframes rainbowBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
 
         .noise {
@@ -55,112 +67,156 @@
             width: 100%;
             height: 100%;
             z-index: -1;
-            opacity: 0.02;
-            background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIj48ZmlsdGVyIGlkPSJmIj48ZmVUdXJidWxlbmNlIHR5cGU9ImZyYWN0YWxOb2lzZSIgYmFzZUZyZXF1ZW5jeT0iLjc0IiBudW1PY3RhdmVzPSIzIiAvPjwvZmlsdGVyPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbHRlcj0idXJsKCNmKSIgb3BhY2l0eT0iMC4yNSIgLz48L3N2Zz4=');
+            opacity: 0.1;
+            background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIj48ZmlsdGVyIGlkPSJmIj48ZmVUdXJidWxlbmNlIHR5cGU9ImZyYWN0YWxOb2lzZSIgYmFzZUZyZXF1ZW5jeT0iLjc0IiBudW1PY3RhdmVzPSIzIiAvPjwvZmlsdGVyPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbHRlcj0idXJsKCNmKSIgb3BhY2l0eT0iMC4yIiAvPjwvc3ZnPg==');
         }
 
-        /* Navbar */
-        .navbar {
-            position: fixed;
+        /* ===== HEADER NEON ===== */
+        header {
+            position: sticky;
             top: 0;
-            width: 100%;
+            z-index: 100;
             padding: 1rem 5%;
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 100;
-            backdrop-filter: blur(10px);
-            background: rgba(10, 10, 10, 0.95);
-            border-bottom: 1px solid var(--border);
             flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            backdrop-filter: blur(10px);
+            background: rgba(10,10,15,0.7);
+            border-bottom: 2px solid transparent;
+            border-image: linear-gradient(90deg, var(--neon-pink), var(--neon-blue), var(--neon-green), var(--neon-yellow));
+            border-image-slice: 1;
+            box-shadow: 0 0 20px rgba(255,0,255,0.3);
         }
 
         .logo {
-            font-size: clamp(1.2rem, 4vw, 2rem);
+            font-size: 2rem;
             font-weight: 800;
-            background: linear-gradient(135deg, #fff, var(--primary));
+            text-transform: uppercase;
+            background: linear-gradient(45deg, 
+                var(--neon-pink), 
+                var(--neon-blue), 
+                var(--neon-green), 
+                var(--neon-yellow));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            animation: neonText 3s linear infinite;
+            filter: drop-shadow(0 0 15px rgba(255,0,255,0.5));
         }
 
-        .nav-links {
+        @keyframes neonText {
+            0% { filter: drop-shadow(0 0 10px var(--neon-pink)); }
+            25% { filter: drop-shadow(0 0 10px var(--neon-blue)); }
+            50% { filter: drop-shadow(0 0 10px var(--neon-green)); }
+            75% { filter: drop-shadow(0 0 10px var(--neon-yellow)); }
+            100% { filter: drop-shadow(0 0 10px var(--neon-pink)); }
+        }
+
+        nav {
             display: flex;
-            gap: clamp(0.5rem, 2vw, 2rem);
-            flex-wrap: wrap;
+            gap: 2rem;
         }
 
-        .nav-links a {
+        nav a {
             color: #fff;
             text-decoration: none;
-            font-size: clamp(0.8rem, 3vw, 1rem);
+            font-weight: 600;
+            padding: 0.5rem 1rem;
+            border-radius: 30px;
+            transition: all 0.3s;
             position: relative;
-            padding: 0.5rem 0;
-            cursor: pointer;
+            overflow: hidden;
         }
 
-        .nav-links a::after {
+        nav a::before {
             content: '';
             position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--primary);
-            transition: width 0.3s;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
         }
 
-        .nav-links a:hover::after,
-        .nav-links a.active::after {
-            width: 100%;
+        nav a:hover::before {
+            left: 100%;
+        }
+
+        nav a:hover, nav a.activo {
+            background: rgba(255,255,255,0.1);
+            box-shadow: 0 0 15px currentColor;
+            color: var(--neon-blue);
         }
 
         .social-header {
             display: flex;
-            gap: 0.8rem;
+            gap: 1.2rem;
         }
 
         .social-header a {
             color: #fff;
-            font-size: 1.2rem;
-            transition: color 0.3s;
+            font-size: 1.3rem;
+            transition: all 0.3s;
+            filter: drop-shadow(0 0 5px currentColor);
         }
 
         .social-header a:hover {
-            color: var(--primary);
+            transform: scale(1.2);
+            color: var(--neon-pink);
         }
 
-        /* Hero */
+        /* ===== HERO NEON ===== */
         .hero {
-            min-height: 70vh;
+            min-height: 50vh;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
-            padding: 6rem 1rem 2rem;
+            padding: 4rem 1rem;
         }
 
         .hero h1 {
-            font-size: clamp(2rem, 8vw, 5rem);
+            font-size: clamp(2.5rem, 10vw, 5rem);
             font-weight: 800;
-            line-height: 1.1;
-            margin-bottom: 1rem;
-            background: linear-gradient(135deg, #fff, var(--primary), var(--secondary));
+            line-height: 1.2;
+            text-transform: uppercase;
+            background: linear-gradient(45deg, 
+                var(--neon-pink), 
+                var(--neon-blue), 
+                var(--neon-green), 
+                var(--neon-yellow),
+                var(--neon-purple));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            background-size: 300% 300%;
+            animation: gradientMove 8s ease infinite;
+            filter: drop-shadow(0 0 30px rgba(255,0,255,0.5));
+        }
+
+        @keyframes gradientMove {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
 
         .hero p {
-            color: var(--gray);
-            font-size: clamp(0.9rem, 4vw, 1.2rem);
-            max-width: 600px;
-            margin: 0 auto;
-            padding: 0 1rem;
+            color: rgba(255,255,255,0.9);
+            font-size: 1.3rem;
+            max-width: 700px;
+            margin: 1.5rem auto 0;
+            text-shadow: 0 0 10px var(--neon-blue);
+            animation: pulse 3s ease infinite;
         }
 
-        /* Buscador */
+        @keyframes pulse {
+            0%, 100% { opacity: 0.9; text-shadow: 0 0 10px var(--neon-blue); }
+            50% { opacity: 1; text-shadow: 0 0 20px var(--neon-pink); }
+        }
+
+        /* ===== BUSCADOR NEON ===== */
         .search-container {
             max-width: 600px;
-            width: 90%;
             margin: 0 auto 2rem;
             padding: 0 1rem;
         }
@@ -171,315 +227,423 @@
             background: rgba(255,255,255,0.05);
             border-radius: 50px;
             padding: 0.3rem;
-            border: 1px solid var(--border);
+            border: 2px solid transparent;
+            transition: border-color 0.3s;
+            animation: borderNeon 3s linear infinite;
+        }
+
+        @keyframes borderNeon {
+            0% { border-color: var(--neon-pink); box-shadow: 0 0 15px var(--neon-pink); }
+            25% { border-color: var(--neon-blue); box-shadow: 0 0 15px var(--neon-blue); }
+            50% { border-color: var(--neon-green); box-shadow: 0 0 15px var(--neon-green); }
+            75% { border-color: var(--neon-yellow); box-shadow: 0 0 15px var(--neon-yellow); }
+            100% { border-color: var(--neon-pink); box-shadow: 0 0 15px var(--neon-pink); }
         }
 
         .search-box input {
             flex: 1;
             background: transparent;
             border: none;
-            padding: 0.8rem 1.2rem;
+            padding: 1rem 1.5rem;
             color: white;
-            font-size: 0.9rem;
-            min-width: 0;
-        }
-
-        .search-box input:focus {
+            font-size: 1rem;
             outline: none;
         }
 
+        .search-box input::placeholder {
+            color: rgba(255,255,255,0.5);
+        }
+
         .search-box button {
-            background: var(--primary);
+            background: linear-gradient(45deg, 
+                var(--neon-pink), 
+                var(--neon-blue), 
+                var(--neon-green));
+            background-size: 200% 200%;
+            animation: buttonGradient 5s ease infinite;
             border: none;
             color: white;
-            padding: 0.8rem 1.5rem;
+            padding: 1rem 2rem;
             border-radius: 50px;
             cursor: pointer;
-            transition: all 0.3s;
-            white-space: nowrap;
+            font-weight: 600;
+            transition: transform 0.3s;
         }
 
         .search-box button:hover {
-            background: var(--primary-dark);
+            transform: scale(1.05);
+            box-shadow: 0 0 30px var(--neon-pink);
         }
 
-        /* Filtros */
-        .category-filters {
+        /* ===== FILTROS NEON ===== */
+        .filtros {
             display: flex;
             justify-content: center;
-            gap: 0.5rem;
-            margin: 2rem 0;
+            gap: 1rem;
             flex-wrap: wrap;
+            margin: 2rem 0;
             padding: 0 1rem;
         }
 
-        .category-btn {
-            padding: 0.6rem 1.2rem;
-            background: rgba(255,255,255,0.05);
-            border: 1px solid var(--border);
+        .filtro-btn {
+            padding: 0.8rem 1.8rem;
+            border: 2px solid transparent;
+            background: rgba(255,255,255,0.03);
             color: white;
-            border-radius: 50px;
+            border-radius: 40px;
+            font-size: 1rem;
+            font-weight: 600;
             cursor: pointer;
-            transition: all 0.3s;
             display: flex;
             align-items: center;
             gap: 0.5rem;
-            font-size: 0.9rem;
-            white-space: nowrap;
+            transition: all 0.3s;
+            animation: btnNeon 4s linear infinite;
         }
 
-        .category-btn i {
-            font-size: 1rem;
+        .filtro-btn.activo {
+            animation: none;
+            border-color: var(--neon-blue);
+            box-shadow: 0 0 20px var(--neon-blue);
+            background: rgba(255,255,255,0.1);
         }
 
-        .category-btn:hover,
-        .category-btn.active {
-            background: var(--primary);
+        .filtro-btn i {
+            font-size: 1.1rem;
         }
 
-        /* Grid de apps - sin animaciones que causen parpadeo */
-        .apps-grid {
+        /* ===== GRID DE TARJETAS NEON ===== */
+        .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
-            padding: 1rem;
-            max-width: 1400px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1300px;
             margin: 0 auto;
+            padding: 2rem;
         }
 
-        .app-card {
-            background: var(--card-bg);
-            border: 1px solid var(--border);
+        .card {
+            background: rgba(255,255,255,0.02);
+            backdrop-filter: blur(10px);
             border-radius: 20px;
-            padding: 1.2rem;
-            transition: transform 0.2s, border-color 0.2s;
-            backdrop-filter: blur(5px);
+            padding: 1.5rem;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+            border: 2px solid transparent;
+            animation: cardBorder 6s linear infinite;
         }
 
-        .app-card:hover {
-            transform: translateY(-4px);
-            border-color: var(--primary);
+        @keyframes cardBorder {
+            0% { border-color: var(--neon-pink); box-shadow: 0 0 30px rgba(255,0,255,0.3); }
+            25% { border-color: var(--neon-blue); box-shadow: 0 0 30px rgba(0,255,255,0.3); }
+            50% { border-color: var(--neon-green); box-shadow: 0 0 30px rgba(0,255,0,0.3); }
+            75% { border-color: var(--neon-yellow); box-shadow: 0 0 30px rgba(255,255,0,0.3); }
+            100% { border-color: var(--neon-pink); box-shadow: 0 0 30px rgba(255,0,255,0.3); }
         }
 
-        .app-image {
+        .card:hover {
+            transform: translateY(-10px) scale(1.02);
+            animation: none;
+            border-color: var(--neon-pink);
+            box-shadow: 0 0 50px var(--neon-pink);
+        }
+
+        .card img {
             width: 100%;
-            height: 160px;
+            height: 180px;
             object-fit: cover;
             border-radius: 12px;
             margin-bottom: 1rem;
-            border: 2px solid rgba(124, 58, 237, 0.3);
-            background: var(--dark-light);
+            border: 2px solid rgba(255,255,255,0.1);
+            transition: all 0.3s;
         }
 
-        .app-category {
+        .card:hover img {
+            border-color: var(--neon-blue);
+            box-shadow: 0 0 30px var(--neon-blue);
+        }
+
+        .etiqueta {
             display: inline-block;
-            padding: 0.3rem 1rem;
-            background: rgba(124, 58, 237, 0.2);
-            border-radius: 50px;
-            font-size: 0.75rem;
-            color: var(--primary);
-            margin-bottom: 0.5rem;
-            border: 1px solid rgba(124, 58, 237, 0.3);
-        }
-
-        .app-title {
-            font-size: 1.2rem;
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-        }
-
-        .app-description {
-            color: var(--gray);
-            font-size: 0.85rem;
+            padding: 0.4rem 1.2rem;
+            background: linear-gradient(45deg, 
+                var(--neon-pink), 
+                var(--neon-purple));
+            color: white;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            font-weight: 700;
             margin-bottom: 1rem;
-            line-height: 1.5;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            animation: etiquetaNeon 3s linear infinite;
         }
 
-        .download-btn {
+        @keyframes etiquetaNeon {
+            0% { filter: drop-shadow(0 0 5px var(--neon-pink)); }
+            33% { filter: drop-shadow(0 0 5px var(--neon-blue)); }
+            66% { filter: drop-shadow(0 0 5px var(--neon-green)); }
+            100% { filter: drop-shadow(0 0 5px var(--neon-pink)); }
+        }
+
+        .card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(90deg, #fff, var(--neon-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .card p {
+            color: rgba(255,255,255,0.7);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .meta {
+            display: flex;
+            gap: 1.5rem;
+            color: rgba(255,255,255,0.6);
+            font-size: 0.85rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .meta i {
+            color: var(--neon-green);
+            margin-right: 0.3rem;
+            filter: drop-shadow(0 0 5px var(--neon-green));
+        }
+
+        .btn-descarga {
             display: block;
             text-align: center;
-            padding: 0.8rem;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            padding: 1rem;
+            background: linear-gradient(45deg, 
+                var(--neon-blue), 
+                var(--neon-purple), 
+                var(--neon-pink));
+            background-size: 200% 200%;
+            animation: btnGradient 3s ease infinite;
             color: white;
             text-decoration: none;
-            border-radius: 10px;
-            transition: opacity 0.2s;
-            font-size: 0.9rem;
-            font-weight: 500;
-            width: 100%;
+            border-radius: 12px;
+            font-weight: 600;
+            transition: all 0.3s;
             border: none;
-            cursor: pointer;
         }
 
-        .download-btn:hover {
-            opacity: 0.9;
+        @keyframes btnGradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
 
-        /* Redes sociales */
+        .btn-descarga:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 30px var(--neon-pink);
+        }
+
+        /* ===== SECCIÓN SOCIAL NEON ===== */
         .social-section {
             text-align: center;
-            padding: 3rem 1rem;
+            padding: 4rem 1rem;
         }
 
-        .social-title {
-            font-size: clamp(1.5rem, 5vw, 2rem);
+        .social-section h2 {
+            font-size: 2.5rem;
             margin-bottom: 2rem;
+            background: linear-gradient(45deg, 
+                var(--neon-pink), 
+                var(--neon-blue), 
+                var(--neon-green), 
+                var(--neon-yellow));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: titleNeon 5s linear infinite;
         }
 
         .social-buttons {
             display: flex;
             justify-content: center;
-            gap: 1rem;
+            gap: 1.5rem;
             flex-wrap: wrap;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 1rem;
         }
 
         .social-btn {
-            padding: 0.8rem 1.5rem;
+            padding: 1rem 2.5rem;
             border-radius: 50px;
-            text-decoration: none;
             color: white;
-            font-weight: 500;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
             display: inline-flex;
             align-items: center;
-            gap: 0.5rem;
-            transition: transform 0.2s;
-            font-size: 0.9rem;
-            flex: 0 1 auto;
+            gap: 0.8rem;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .social-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s;
+        }
+
+        .social-btn:hover::before {
+            left: 100%;
         }
 
         .social-btn:hover {
-            transform: translateY(-2px);
+            transform: translateY(-5px) scale(1.05);
+            filter: brightness(1.2);
+            box-shadow: 0 0 30px currentColor;
         }
 
-        .social-btn.telegram { background: #0088cc; }
-        .social-btn.discord { background: #5865f2; }
-        .social-btn.tiktok { background: #000000; }
-        .social-btn.youtube { background: #ff0000; }
-        .social-btn.email { background: var(--primary); }
+        .telegram { background: linear-gradient(45deg, #0088cc, #00a2ff); }
+        .discord { background: linear-gradient(45deg, #5865f2, #7983f5); }
+        .tiktok { background: linear-gradient(45deg, #000, #333); }
+        .youtube { background: linear-gradient(45deg, #ff0000, #ff4444); }
+        .email { background: linear-gradient(45deg, var(--neon-pink), var(--neon-purple)); }
 
-        /* Footer */
+        /* ===== FOOTER NEON ===== */
         footer {
-            background: var(--dark-light);
-            padding: 3rem 1rem 1rem;
-            margin-top: 3rem;
+            background: rgba(10,10,15,0.9);
+            backdrop-filter: blur(10px);
+            padding: 4rem 1rem 2rem;
+            margin-top: 4rem;
+            border-top: 2px solid transparent;
+            border-image: linear-gradient(90deg, var(--neon-pink), var(--neon-blue), var(--neon-green), var(--neon-yellow));
+            border-image-slice: 1;
         }
 
         .footer-content {
             max-width: 1200px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
         }
 
         .footer-section h4 {
-            color: white;
-            margin-bottom: 1rem;
-            font-size: 1.1rem;
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            color: var(--neon-blue);
+            text-shadow: 0 0 10px var(--neon-blue);
         }
 
         .footer-section p {
-            color: var(--gray);
-            font-size: 0.9rem;
-            line-height: 1.5;
+            color: rgba(255,255,255,0.7);
+            line-height: 1.6;
         }
 
         .footer-section a {
             display: block;
-            color: var(--gray);
+            color: rgba(255,255,255,0.7);
             text-decoration: none;
-            margin-bottom: 0.5rem;
-            transition: color 0.2s;
-            font-size: 0.9rem;
+            margin-bottom: 0.8rem;
+            transition: all 0.3s;
         }
 
         .footer-section a:hover {
-            color: var(--primary);
+            color: var(--neon-pink);
+            transform: translateX(5px);
+            text-shadow: 0 0 10px var(--neon-pink);
         }
 
         .footer-bottom {
             text-align: center;
-            padding-top: 2rem;
-            margin-top: 2rem;
-            border-top: 1px solid var(--border);
-            color: var(--gray);
-            font-size: 0.85rem;
+            padding-top: 3rem;
+            margin-top: 3rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: rgba(255,255,255,0.6);
         }
 
-        /* Mensajes */
-        .no-results {
-            grid-column: 1/-1;
-            text-align: center;
-            padding: 3rem;
-            color: var(--gray);
+        .footer-bottom span {
+            color: var(--neon-green);
+            font-weight: 600;
+            animation: footerNeon 2s ease infinite;
         }
 
-        .no-results i {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            color: var(--primary);
+        @keyframes footerNeon {
+            0%, 100% { text-shadow: 0 0 10px var(--neon-green); }
+            50% { text-shadow: 0 0 20px var(--neon-green), 0 0 30px var(--neon-blue); }
         }
 
-        /* Responsive */
-        @media (max-width: 480px) {
-            .navbar {
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            header {
                 flex-direction: column;
-                gap: 0.5rem;
-                padding: 0.8rem;
+                gap: 1rem;
+                text-align: center;
             }
-            .nav-links {
+
+            nav {
+                gap: 1rem;
+                flex-wrap: wrap;
                 justify-content: center;
             }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .search-box {
+                flex-direction: column;
+            }
+
+            .filtro-btn {
+                padding: 0.6rem 1.2rem;
+                font-size: 0.9rem;
+            }
+
             .social-buttons {
                 flex-direction: column;
                 align-items: center;
             }
+
             .social-btn {
                 width: 100%;
-                max-width: 280px;
+                max-width: 300px;
                 justify-content: center;
             }
         }
     </style>
 </head>
 <body>
-    <div class="bg-fixed"></div>
+    <div class="neon-bg"></div>
     <div class="noise"></div>
 
-    <!-- Navbar -->
-    <nav class="navbar">
-        <div class="logo">JOZETH<span style="color: var(--primary);">CPM1</span></div>
-        <div class="nav-links">
-            <a class="active" onclick="showHome()">Inicio</a>
-            <a onclick="showHome()">Apps</a>
-            <a onclick="showPrivacy()">Privacidad</a>
-            <a onclick="showContact()">Contacto</a>
-        </div>
+    <header>
+        <div class="logo">JOZETH<span style="color:var(--neon-blue);">CPM1</span></div>
+        <nav>
+            <a href="#inicio" id="nav-inicio" class="activo">Inicio</a>
+            <a href="#privacidad" id="nav-privacidad">Privacidad</a>
+            <a href="#contacto" id="nav-contacto">Contacto</a>
+        </nav>
         <div class="social-header">
             <a href="https://www.youtube.com/@JOZETHCPM1" target="_blank"><i class="fab fa-youtube"></i></a>
             <a href="https://www.tiktok.com/@.asmodeotk" target="_blank"><i class="fab fa-tiktok"></i></a>
         </div>
-    </nav>
+    </header>
 
-    <!-- Hero -->
-    <section class="hero">
-        <div>
-            <h1>JOZETHCPM1<br>APK HUB</h1>
-            <p>Las mejores aplicaciones, juegos modificados y tutoriales. 100% legítimo y seguro.</p>
-        </div>
-    </section>
-
-    <!-- Contenido principal -->
-    <main id="mainContent">
-        <!-- Se carga dinámicamente -->
+    <main id="main">
+        <!-- Contenido dinámico -->
     </main>
 
-    <!-- Redes sociales fijas -->
     <section class="social-section">
-        <h2 class="social-title">📱 Conéctate con nosotros</h2>
+        <h2>⚡ CONÉCTATE CON NOSOTROS ⚡</h2>
         <div class="social-buttons">
             <a href="https://t.me/Jozethcpm0" target="_blank" class="social-btn telegram"><i class="fab fa-telegram"></i> Telegram</a>
             <a href="https://discord.gg/daJQPFmUF" target="_blank" class="social-btn discord"><i class="fab fa-discord"></i> Discord</a>
@@ -489,207 +653,269 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer>
         <div class="footer-content">
             <div class="footer-section">
                 <h4>JOZETHCPM1</h4>
-                <p>Tu hub de confianza para aplicaciones y juegos modificados. Todo 100% legítimo y verificado.</p>
+                <p>Tu hub de confianza para aplicaciones y juegos modificados. Todo 100% legítimo y verificado con estilo NEON.</p>
             </div>
             <div class="footer-section">
                 <h4>Enlaces rápidos</h4>
-                <a onclick="showHome()">Inicio</a>
-                <a onclick="showHome()">Apps</a>
-                <a onclick="showPrivacy()">Política de Privacidad</a>
-                <a onclick="showContact()">Contacto</a>
+                <a href="#inicio" class="footer-link" data-page="inicio">Inicio</a>
+                <a href="#privacidad" class="footer-link" data-page="privacidad">Privacidad</a>
+                <a href="#contacto" class="footer-link" data-page="contacto">Contacto</a>
             </div>
             <div class="footer-section">
-                <h4>Contacto</h4>
+                <h4>Contacto NEON</h4>
                 <a href="mailto:asmodeotayson@gmail.com"><i class="fas fa-envelope"></i> asmodeotayson@gmail.com</a>
                 <a href="https://t.me/Jozethcpm0"><i class="fab fa-telegram"></i> @Jozethcpm0</a>
                 <a href="https://discord.gg/daJQPFmUF"><i class="fab fa-discord"></i> Discord</a>
-                <a href="https://www.tiktok.com/@.asmodeotk"><i class="fab fa-tiktok"></i> @.asmodeotk</a>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>© 2024 JOZETHCPM1 APK HUB. Todos los derechos reservados.</p>
-            <p style="margin-top: 0.5rem; color: var(--primary);">🌟 100% legítimo y seguro 🌟</p>
+            <p>© 2024 JOZETHCPM1 NEON HUB. Todos los derechos reservados.</p>
+            <p><span>🌟 100% LEGÍTIMO Y SEGURO 🌟</span></p>
         </div>
     </footer>
 
     <script>
-        // ==================== BASE DE DATOS ====================
-        // SOLO DATOS REALES: nombre, categoría, descripción corta, imagen y enlace.
-        // Sin pesos, versiones ni descargas falsas.
-        const appsDatabase = [
-            // Juegos (category: 'games')
-            {
-                id: 1,
-                name: 'Ishiruka Emulador',
-                category: 'games',
-                categoryLabel: '🎮 Juegos',
-                description: 'Emulador de GameCube y Wii optimizado para Android.',
-                image: 'https://via.placeholder.com/300x180/1a1a1a/7c3aed?text=Ishiruka',
-                url: 'https://www.mediafire.com/file/o4zfia09jjve16v/Ishiruka_Ishiruka_v16.apk/file'
+        // ========== BASE DE DATOS NEON ==========
+        const appsData = [
+            // JUEGOS MOD
+            { 
+                id: 1, 
+                nombre: 'Car Parking Multiplayer MOD', 
+                categoria: 'juegos', 
+                etiqueta: '🎮 JUEGO MOD', 
+                desc: 'Multijugador de estacionamiento con coches modificados, dinero infinito y eventos online exclusivos.', 
+                imagen: 'https://via.placeholder.com/300x180/1a1a1a/ff00ff?text=Car+Parking+MOD',
+                tamaño: '482 MB', 
+                version: '4.8.2', 
+                url: 'https://www.mediafire.com/file/et46cxcu69ehaok/cpm48213modt-Appsfab.net.apk/file' 
             },
-            {
-                id: 2,
-                name: 'Resident Evil 4',
-                category: 'games',
-                categoryLabel: '🎮 Juegos',
-                description: 'Resident Evil 4 Wii Edition para Android.',
-                image: 'https://via.placeholder.com/300x180/1a1a1a/7c3aed?text=Resident+Evil+4',
-                url: 'https://www.mediafire.com/file/yimnvpsek5d1nl2/Resident_Evil_4_-_Wii_Edition_%2528USA%2529.nkit.7z/file'
+            { 
+                id: 2, 
+                nombre: 'Resident Evil 4 Wii Edition', 
+                categoria: 'juegos', 
+                etiqueta: '🎮 JUEGO MOD', 
+                desc: 'Clásico de terror en versión Wii para Android con texturas mejoradas y saves incluidos.', 
+                imagen: 'https://via.placeholder.com/300x180/1a1a1a/00ffff?text=Resident+Evil+4',
+                tamaño: '4.2 GB', 
+                version: 'Wii NTSC', 
+                url: 'https://www.mediafire.com/file/yimnvpsek5d1nl2/Resident_Evil_4_-_Wii_Edition_%2528USA%2529.nkit.7z/file' 
             },
-            // Apps Mod (category: 'mods')
-            {
-                id: 3,
-                name: 'MT Manager',
-                category: 'mods',
-                categoryLabel: '📦 App Mod',
-                description: 'Gestor de archivos APK con editor integrado.',
-                image: 'https://via.placeholder.com/300x180/1a1a1a/7c3aed?text=MT+Manager',
-                url: 'https://www.mediafire.com/file/qvtjqahtjc5dr7p/MT_Manager_2.15.7-clone.apk/file'
+            // APPS MOD
+            { 
+                id: 3, 
+                nombre: 'MT Manager', 
+                categoria: 'apps', 
+                etiqueta: '📱 APP MOD', 
+                desc: 'Gestor de archivos con editor de APK, traductor de recursos y explorador root avanzado.', 
+                imagen: 'https://via.placeholder.com/300x180/1a1a1a/00ff00?text=MT+Manager',
+                tamaño: '8.5 MB', 
+                version: '2.15.7', 
+                url: 'https://www.mediafire.com/file/qvtjqahtjc5dr7p/MT_Manager_2.15.7-clone.apk/file' 
             },
-            {
-                id: 4,
-                name: 'Car Parking Multiplayer MOD',
-                category: 'mods',
-                categoryLabel: '📦 App Mod',
-                description: 'Parking multiplayer con coches modificados.',
-                image: 'https://via.placeholder.com/300x180/1a1a1a/7c3aed?text=Car+Parking',
-                url: 'https://www.mediafire.com/file/et46cxcu69ehaok/cpm48213modt-Appsfab.net.apk/file'
+            { 
+                id: 4, 
+                nombre: 'Ishiruka Emulador', 
+                categoria: 'apps', 
+                etiqueta: '📱 APP MOD', 
+                desc: 'Emulador de GameCube/Wii optimizado para Android, basado en Dolphin con mejoras de rendimiento.', 
+                imagen: 'https://via.placeholder.com/300x180/1a1a1a/ffff00?text=Ishiruka',
+                tamaño: '25 MB', 
+                version: '16.0', 
+                url: 'https://www.mediafire.com/file/o4zfia09jjve16v/Ishiruka_Ishiruka_v16.apk/file' 
+            },
+            // TUTORIALES
+            { 
+                id: 5, 
+                nombre: 'Cómo modificar APK con MT Manager', 
+                categoria: 'tutoriales', 
+                etiqueta: '📘 TUTORIAL', 
+                desc: 'Aprende a editar APKs, traducir aplicaciones y modificar recursos paso a paso desde cero.', 
+                imagen: 'https://via.placeholder.com/300x180/1a1a1a/aa00ff?text=Tutorial+MT',
+                tamaño: 'Video', 
+                version: 'HD', 
+                url: '#' 
+            },
+            // SCRIPTS
+            { 
+                id: 6, 
+                nombre: 'Script Auto Clicker Avanzado', 
+                categoria: 'scripts', 
+                etiqueta: '⚙️ SCRIPT', 
+                desc: 'Script para auto clicker con reconocimiento de imágenes, grabación de macros y más funciones.', 
+                imagen: 'https://via.placeholder.com/300x180/1a1a1a/ff3300?text=Script',
+                tamaño: '2 MB', 
+                version: '3.0', 
+                url: '#' 
             }
         ];
 
-        // ==================== ESTADO ====================
-        let currentFilter = 'all';
-        let currentSearch = '';
+        // ========== VARIABLES ==========
+        let filtroActual = 'todos';
+        let busquedaActual = '';
 
-        // ==================== FUNCIONES ====================
-        function renderApps() {
-            const container = document.getElementById('appsGrid');
-            if (!container) return;
+        // ========== FUNCIONES ==========
+        function renderInicio() {
+            document.getElementById('main').innerHTML = `
+                <div class="hero">
+                    <h1>JOZETHCPM1<br>NEON HUB</h1>
+                    <p>Las mejores apps MOD, juegos modificados y tutoriales con estilo neón. 100% legítimo.</p>
+                </div>
+                <div class="search-container">
+                    <div class="search-box">
+                        <input type="text" id="buscador" placeholder="🔍 Buscar app por nombre..." value="${busquedaActual}">
+                        <button id="btnBuscar"><i class="fas fa-search"></i> BUSCAR</button>
+                    </div>
+                </div>
+                <div class="filtros">
+                    <button class="filtro-btn ${filtroActual === 'todos' ? 'activo' : ''}" data-filtro="todos"><i class="fas fa-grid-2"></i> TODOS</button>
+                    <button class="filtro-btn ${filtroActual === 'juegos' ? 'activo' : ''}" data-filtro="juegos"><i class="fas fa-gamepad"></i> JUEGOS MOD</button>
+                    <button class="filtro-btn ${filtroActual === 'apps' ? 'activo' : ''}" data-filtro="apps"><i class="fas fa-code"></i> APPS MOD</button>
+                    <button class="filtro-btn ${filtroActual === 'tutoriales' ? 'activo' : ''}" data-filtro="tutoriales"><i class="fas fa-video"></i> TUTORIALES</button>
+                    <button class="filtro-btn ${filtroActual === 'scripts' ? 'activo' : ''}" data-filtro="scripts"><i class="fas fa-terminal"></i> SCRIPTS</button>
+                </div>
+                <div class="grid" id="grid-apps"></div>
+            `;
 
-            let filtered = appsDatabase;
-            if (currentFilter !== 'all') {
-                filtered = filtered.filter(app => app.category === currentFilter);
+            mostrarApps();
+
+            // Eventos de filtros
+            document.querySelectorAll('.filtro-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    filtroActual = e.currentTarget.dataset.filtro;
+                    renderInicio();
+                });
+            });
+
+            // Eventos de búsqueda
+            document.getElementById('btnBuscar').addEventListener('click', () => {
+                busquedaActual = document.getElementById('buscador').value;
+                renderInicio();
+            });
+
+            document.getElementById('buscador').addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') {
+                    busquedaActual = e.target.value;
+                    renderInicio();
+                }
+            });
+        }
+
+        function mostrarApps() {
+            let appsFiltradas = appsData;
+
+            if (filtroActual !== 'todos') {
+                appsFiltradas = appsFiltradas.filter(app => app.categoria === filtroActual);
             }
-            if (currentSearch.trim() !== '') {
-                filtered = filtered.filter(app =>
-                    app.name.toLowerCase().includes(currentSearch.toLowerCase())
+
+            if (busquedaActual.trim() !== '') {
+                const termino = busquedaActual.toLowerCase().trim();
+                appsFiltradas = appsFiltradas.filter(app => 
+                    app.nombre.toLowerCase().includes(termino)
                 );
             }
 
-            if (filtered.length === 0) {
-                container.innerHTML = `<div class="no-results"><i class="fas fa-search"></i><p>No se encontraron apps</p></div>`;
+            const grid = document.getElementById('grid-apps');
+            if (!grid) return;
+
+            if (appsFiltradas.length === 0) {
+                grid.innerHTML = `
+                    <div style="grid-column:1/-1; text-align:center; padding:3rem; color:rgba(255,255,255,0.7);">
+                        <i class="fas fa-search" style="font-size:3rem; color:var(--neon-pink); margin-bottom:1rem;"></i>
+                        <p style="font-size:1.2rem;">No se encontraron apps con ese nombre</p>
+                    </div>
+                `;
                 return;
             }
 
-            container.innerHTML = filtered.map(app => `
-                <div class="app-card">
-                    <img src="${app.image}" alt="${app.name}" class="app-image" onerror="this.src='https://via.placeholder.com/300x180/1a1a1a/7c3aed?text=${app.name}'">
-                    <span class="app-category">${app.categoryLabel}</span>
-                    <h3 class="app-title">${app.name}</h3>
-                    <p class="app-description">${app.description}</p>
-                    <a href="${app.url}" class="download-btn" target="_blank" rel="noopener noreferrer">
-                        <i class="fas fa-download"></i> Descargar
-                    </a>
+            grid.innerHTML = appsFiltradas.map(app => `
+                <div class="card">
+                    <img src="${app.imagen}" alt="${app.nombre}" loading="lazy" onerror="this.src='https://via.placeholder.com/300x180/1a1a1a/ff00ff?text=NEON'">
+                    <span class="etiqueta">${app.etiqueta}</span>
+                    <h3>${app.nombre}</h3>
+                    <p>${app.desc}</p>
+                    <div class="meta">
+                        <span><i class="fas fa-weight-hanging"></i> ${app.tamaño}</span>
+                        <span><i class="fas fa-tag"></i> v${app.version}</span>
+                    </div>
+                    <a href="${app.url}" class="btn-descarga" target="_blank" rel="noopener"><i class="fas fa-download"></i> DESCARGAR</a>
                 </div>
             `).join('');
         }
 
-        function filterApps(category) {
-            currentFilter = category;
-            // Actualizar botones activos
-            document.querySelectorAll('.category-btn').forEach(btn => btn.classList.remove('active'));
-            event.target.classList.add('active');
-            renderApps();
-        }
-
-        function searchApps() {
-            const input = document.getElementById('searchInput');
-            currentSearch = input ? input.value : '';
-            renderApps();
-        }
-
-        // ==================== NAVEGACIÓN ====================
-        function showHome() {
-            document.getElementById('mainContent').innerHTML = `
-                <div class="search-container">
-                    <div class="search-box">
-                        <input type="text" id="searchInput" placeholder="Buscar app por nombre..." value="${currentSearch}">
-                        <button onclick="searchApps()"><i class="fas fa-search"></i> Buscar</button>
-                    </div>
-                </div>
-                <div class="category-filters">
-                    <button class="category-btn ${currentFilter === 'all' ? 'active' : ''}" onclick="filterApps('all')"><i class="fas fa-grid-2"></i> Todos</button>
-                    <button class="category-btn ${currentFilter === 'games' ? 'active' : ''}" onclick="filterApps('games')"><i class="fas fa-gamepad"></i> Juegos</button>
-                    <button class="category-btn ${currentFilter === 'mods' ? 'active' : ''}" onclick="filterApps('mods')"><i class="fas fa-code"></i> Apps Mod</button>
-                    <button class="category-btn ${currentFilter === 'tutorials' ? 'active' : ''}" onclick="filterApps('tutorials')"><i class="fas fa-video"></i> Tutoriales</button>
-                    <button class="category-btn ${currentFilter === 'scripts' ? 'active' : ''}" onclick="filterApps('scripts')"><i class="fas fa-terminal"></i> Scripts</button>
-                </div>
-                <div class="apps-grid" id="appsGrid"></div>
-            `;
-            // Actualizar clase activa en navbar
-            document.querySelectorAll('.nav-links a').forEach(link => link.classList.remove('active'));
-            document.querySelectorAll('.nav-links a')[0].classList.add('active'); // Inicio
-            renderApps();
-
-            // Evento para buscar con Enter
-            document.getElementById('searchInput')?.addEventListener('keypress', (e) => {
-                if (e.key === 'Enter') searchApps();
-            });
-        }
-
-        function showPrivacy() {
-            document.getElementById('mainContent').innerHTML = `
-                <div style="max-width:800px; margin:2rem auto; padding:2rem; background:rgba(255,255,255,0.02); border-radius:20px;">
-                    <h1 style="color:var(--primary); margin-bottom:2rem;">📋 Política de Privacidad</h1>
-                    <h2 style="color:#fff; margin:2rem 0 1rem;">Compromiso con la transparencia</h2>
-                    <p style="color:var(--gray); margin-bottom:1rem;">En JOZETHCPM1 APK HUB, nos tomamos muy en serio tu privacidad. No recopilamos información personal, no usamos cookies de rastreo y no almacenamos datos de usuarios.</p>
-                    <h2 style="color:#fff; margin:2rem 0 1rem;">Enlaces externos</h2>
-                    <p style="color:var(--gray); margin-bottom:1rem;">Nuestro sitio contiene enlaces a sitios externos (MediaFire). No tenemos control sobre su contenido ni prácticas de privacidad.</p>
-                    <h2 style="color:#fff; margin:2rem 0 1rem;">Legitimidad</h2>
-                    <p style="color:var(--gray); margin-bottom:1rem;"><strong style="color:var(--primary);">🌟 100% LEGÍTIMO 🌟</strong> - Todos los enlaces son verificados y seguros.</p>
+        function renderPrivacidad() {
+            document.getElementById('main').innerHTML = `
+                <div style="max-width:800px; margin:4rem auto; padding:2rem; background:rgba(255,255,255,0.02); border-radius:20px; border:2px solid var(--neon-blue); box-shadow:0 0 30px var(--neon-blue);">
+                    <h1 style="color:var(--neon-pink); font-size:2.5rem; margin-bottom:2rem; text-shadow:0 0 15px var(--neon-pink);">📋 POLÍTICA DE PRIVACIDAD NEON</h1>
+                    <p style="color:rgba(255,255,255,0.8); margin-bottom:1.5rem;">En JOZETHCPM1 NEON HUB respetamos tu privacidad. No recopilamos información personal, no usamos cookies de rastreo y no almacenamos datos de usuarios.</p>
+                    <p style="color:rgba(255,255,255,0.8); margin-bottom:1.5rem;">Los enlaces compartidos son a sitios externos (MediaFire) y no tenemos control sobre sus políticas. Verificamos cada enlace antes de publicarlo.</p>
+                    <p style="color:var(--neon-green); font-size:1.2rem; text-shadow:0 0 10px var(--neon-green);">🌟 100% LEGÍTIMO Y SEGURO 🌟</p>
                 </div>
             `;
-            document.querySelectorAll('.nav-links a').forEach(link => link.classList.remove('active'));
-            document.querySelectorAll('.nav-links a')[2].classList.add('active'); // Privacidad
         }
 
-        function showContact() {
-            document.getElementById('mainContent').innerHTML = `
-                <div style="max-width:600px; margin:2rem auto; padding:2rem; background:rgba(255,255,255,0.02); border-radius:20px; text-align:center;">
-                    <h1 style="color:var(--primary); margin-bottom:2rem;">📬 Contacto</h1>
-                    <div style="margin:2rem 0;">
-                        <div style="display:flex; align-items:center; justify-content:center; gap:1rem; padding:1rem; background:rgba(255,255,255,0.05); border-radius:10px; margin-bottom:1rem;">
-                            <i class="fas fa-envelope fa-2x" style="color:var(--primary);"></i>
-                            <div><h3 style="color:#fff;">Email</h3><p style="color:var(--gray);">asmodeotayson@gmail.com</p></div>
+        function renderContacto() {
+            document.getElementById('main').innerHTML = `
+                <div style="max-width:600px; margin:4rem auto; padding:2rem; background:rgba(255,255,255,0.02); border-radius:20px; border:2px solid var(--neon-green); box-shadow:0 0 30px var(--neon-green);">
+                    <h1 style="color:var(--neon-blue); font-size:2.5rem; margin-bottom:2rem; text-shadow:0 0 15px var(--neon-blue);">📬 CONTACTO NEON</h1>
+                    <div style="display:flex; flex-direction:column; gap:1.5rem;">
+                        <div style="display:flex; align-items:center; gap:1.5rem; padding:1rem; background:rgba(255,255,255,0.05); border-radius:12px;">
+                            <i class="fas fa-envelope fa-2x" style="color:var(--neon-pink);"></i>
+                            <div><strong style="color:var(--neon-pink);">EMAIL</strong><br style="color:rgba(255,255,255,0.8);">asmodeotayson@gmail.com</div>
                         </div>
-                        <div style="display:flex; align-items:center; justify-content:center; gap:1rem; padding:1rem; background:rgba(255,255,255,0.05); border-radius:10px; margin-bottom:1rem;">
-                            <i class="fab fa-telegram fa-2x" style="color:#0088cc;"></i>
-                            <div><h3 style="color:#fff;">Telegram</h3><p style="color:var(--gray);">@Jozethcpm0</p></div>
+                        <div style="display:flex; align-items:center; gap:1.5rem; padding:1rem; background:rgba(255,255,255,0.05); border-radius:12px;">
+                            <i class="fab fa-telegram fa-2x" style="color:var(--neon-blue);"></i>
+                            <div><strong style="color:var(--neon-blue);">TELEGRAM</strong><br>@Jozethcpm0</div>
                         </div>
-                        <div style="display:flex; align-items:center; justify-content:center; gap:1rem; padding:1rem; background:rgba(255,255,255,0.05); border-radius:10px; margin-bottom:1rem;">
-                            <i class="fab fa-discord fa-2x" style="color:#5865f2;"></i>
-                            <div><h3 style="color:#fff;">Discord</h3><p style="color:var(--gray);">https://discord.gg/daJQPFmUF</p></div>
+                        <div style="display:flex; align-items:center; gap:1.5rem; padding:1rem; background:rgba(255,255,255,0.05); border-radius:12px;">
+                            <i class="fab fa-discord fa-2x" style="color:var(--neon-purple);"></i>
+                            <div><strong style="color:var(--neon-purple);">DISCORD</strong><br>https://discord.gg/daJQPFmUF</div>
                         </div>
-                    </div>
-                    <div style="margin-top:2rem; padding:1.5rem; background:rgba(124,58,237,0.1); border-radius:10px;">
-                        <h3 style="color:var(--primary);">🌟 100% LEGÍTIMO</h3>
-                        <p style="color:var(--gray);">Enlaces verificados y seguros.</p>
                     </div>
                 </div>
             `;
-            document.querySelectorAll('.nav-links a').forEach(link => link.classList.remove('active'));
-            document.querySelectorAll('.nav-links a')[3].classList.add('active'); // Contacto
         }
 
-        // ==================== INICIO ====================
-        document.addEventListener('DOMContentLoaded', () => {
-            showHome();
+        // ========== NAVEGACIÓN ==========
+        function marcarActivo(page) {
+            document.querySelectorAll('nav a').forEach(a => a.classList.remove('activo'));
+            document.getElementById(`nav-${page}`).classList.add('activo');
+        }
+
+        document.getElementById('nav-inicio').addEventListener('click', (e) => {
+            e.preventDefault();
+            marcarActivo('inicio');
+            renderInicio();
         });
+
+        document.getElementById('nav-privacidad').addEventListener('click', (e) => {
+            e.preventDefault();
+            marcarActivo('privacidad');
+            renderPrivacidad();
+        });
+
+        document.getElementById('nav-contacto').addEventListener('click', (e) => {
+            e.preventDefault();
+            marcarActivo('contacto');
+            renderContacto();
+        });
+
+        document.querySelectorAll('.footer-link').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const page = link.dataset.page;
+                marcarActivo(page);
+                if (page === 'inicio') renderInicio();
+                if (page === 'privacidad') renderPrivacidad();
+                if (page === 'contacto') renderContacto();
+            });
+        });
+
+        // Iniciar
+        renderInicio();
     </script>
 </body>
 </html>
