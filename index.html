@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>JOZETHCPM1 - APK Hub</title>
+    <!-- Fonts e íconos -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* ===== RESET Y VARIABLES ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #7c3aed;
+            --primary-dark: #6d28d9;
+            --secondary: #10b981;
+            --dark: #0a0a0a;
+            --dark-light: #1a1a1a;
+            --gray: #9ca3af;
+            --card-bg: rgba(255, 255, 255, 0.02);
+            --border: rgba(255, 255, 255, 0.05);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--dark);
+            color: #fff;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        /* ===== BACKGROUND ANIMADO ===== */
+        .gradient-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            background: radial-gradient(circle at 20% 50%, rgba(124, 58, 237, 0.15) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 80%, rgba(16, 185, 129, 0.15) 0%, transparent 50%);
+        }
+
+        .noise {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.02;
+            background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIj48ZmlsdGVyIGlkPSJmIj48ZmVUdXJidWxlbmNlIHR5cGU9ImZyYWN0YWxOb2lzZSIgYmFzZUZyZXF1ZW5jeT0iLjc0IiBudW1PY3RhdmVzPSIzIiAvPjwvZmlsdGVyPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbHRlcj0idXJsKCNmKSIgb3BhY2l0eT0iMC4yNSIgLz48L3N2Zz4=');
+        }
+
+        /* ===== NAVBAR RESPONSIVE ===== */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+            background: rgba(10, 10, 10, 0.95);
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            font-size: clamp(1.2rem, 4vw, 2rem);
+            font-weight: 800;
+            background: linear-gradient(135deg, #fff, var(--primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: clamp(0.5rem, 2vw, 2rem);
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-size: clamp(0.8rem, 3vw, 1rem);
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .social-header {
+            display: flex;
+            gap: 0.8rem;
+        }
+
+        .social-header a {
+            color: #fff;
+            font-size: 1.2rem;
+            transition: color 0.3s;
+        }
+
+        .social-header a:hover {
+            color: var(--primary);
+        }
+
+        /* ===== HERO SECTION ===== */
+        .hero {
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 6rem 1rem 2rem;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            width: 100%;
+        }
+
+        .hero h1 {
+            font-size: clamp(2rem, 8vw, 5rem);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #fff, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            color: var(--gray);
+            font-size: clamp(0.9rem, 4vw, 1.2rem);
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            padding: 0 1rem;
+        }
+
+        /* ===== SEARCH BAR ===== */
+        .search-container {
+            max-width: 600px;
+            width: 90%;
+            margin: 0 auto 2rem;
+            padding: 0 1rem;
+        }
+
+        .search-box {
+            display: flex;
+            gap: 0.5rem;
+            background: rgba(255,255,255,0.05);
+            border-radius: 50px;
+            padding: 0.3rem;
+            border: 1px solid var(--border);
+        }
+
+        .search-box input {
+            flex: 1;
+            background: transparent;
+            border: none;
+            padding: 0.8rem 1.2rem;
+            color: white;
+            font-size: 0.9rem;
+            min-width: 0;
+        }
+
+        .search-box input:focus {
+            outline: none;
+        }
+
+        .search-box input::placeholder {
+            color: var(--gray);
+        }
+
+        .search-box button {
+            background: var(--primary);
+            border: none;
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s;
+            white-space: nowrap;
+        }
+
+        .search-box button:hover {
+            background: var(--primary-dark);
+        }
+
+        /* ===== CATEGORY FILTERS ===== */
+        .category-filters {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+            padding: 0 1rem;
+        }
+
+        .category-btn {
+            padding: 0.6rem 1.2rem;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid var(--border);
+            color: white;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            white-space: nowrap;
+        }
+
+        .category-btn i {
+            font-size: 1rem;
+        }
+
+        .category-btn:hover,
+        .category-btn.active {
+            background: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        /* ===== APPS GRID ===== */
+        .apps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            padding: 1rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .app-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 1.2rem;
+            transition: all 0.3s;
+            animation: fadeIn 0.5s ease-out;
+            backdrop-filter: blur(5px);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .app-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+            box-shadow: 0 20px 30px -10px rgba(124, 58, 237, 0.3);
+        }
+
+        .app-image {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+            border-radius: 12px;
+            margin-bottom: 1rem;
+            border: 2px solid rgba(124, 58, 237, 0.3);
+            background: var(--dark-light);
+        }
+
+        .app-category {
+            display: inline-block;
+            padding: 0.3rem 1rem;
+            background: rgba(124, 58, 237, 0.2);
+            border-radius: 50px;
+            font-size: 0.75rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            border: 1px solid rgba(124, 58, 237, 0.3);
+        }
+
+        .app-title {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .app-description {
+            color: var(--gray);
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
+            line-height: 1.5;
+        }
+
+        .app-meta {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            color: var(--gray);
+            font-size: 0.75rem;
+            flex-wrap: wrap;
+        }
+
+        .app-meta i {
+            color: var(--primary);
+            margin-right: 0.2rem;
+        }
+
+        .download-btn {
+            display: block;
+            text-align: center;
+            padding: 0.8rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            text-decoration: none;
+            border-radius: 10px;
+            transition: all 0.3s;
+            font-size: 0.9rem;
+            font-weight: 500;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        .download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px -5px rgba(124, 58, 237, 0.5);
+        }
+
+        /* ===== SOCIAL SECTION ===== */
+        .social-section {
+            text-align: center;
+            padding: 3rem 1rem;
+        }
+
+        .social-title {
+            font-size: clamp(1.5rem, 5vw, 2rem);
+            margin-bottom: 2rem;
+        }
+
+        .social-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .social-btn {
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            color: white;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s;
+            font-size: 0.9rem;
+            flex: 0 1 auto;
+        }
+
+        .social-btn:hover {
+            transform: translateY(-3px);
+            filter: brightness(1.1);
+        }
+
+        .social-btn.telegram { background: #0088cc; }
+        .social-btn.discord { background: #5865f2; }
+        .social-btn.tiktok { background: #000000; }
+        .social-btn.youtube { background: #ff0000; }
+        .social-btn.email { background: var(--primary); }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: var(--dark-light);
+            padding: 3rem 1rem 1rem;
+            margin-top: 3rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-section h4 {
+            color: white;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .footer-section p {
+            color: var(--gray);
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .footer-section a {
+            display: block;
+            color: var(--gray);
+            text-decoration: none;
+            margin-bottom: 0.5rem;
+            transition: color 0.3s;
+            font-size: 0.9rem;
+        }
+
+        .footer-section a:hover {
+            color: var(--primary);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid var(--border);
+            color: var(--gray);
+            font-size: 0.85rem;
+        }
+
+        /* ===== UTILIDADES ===== */
+        .loading-spinner {
+            text-align: center;
+            padding: 3rem;
+            color: var(--gray);
+        }
+
+        .loading-spinner i {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .error-message {
+            text-align: center;
+            padding: 3rem;
+            color: #ff4444;
+        }
+
+        /* ===== RESPONSIVE EXTRA ===== */
+        @media (max-width: 480px) {
+            .navbar {
+                flex-direction: column;
+                gap: 0.5rem;
+                padding: 0.8rem;
+            }
+            
+            .nav-links {
+                justify-content: center;
+            }
+            
+            .category-btn {
+                padding: 0.5rem 1rem;
+                font-size: 0.8rem;
+            }
+            
+            .category-btn i {
+                font-size: 0.8rem;
+            }
+            
+            .social-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .social-btn {
+                width: 100%;
+                max-width: 280px;
+                justify-content: center;
+            }
+            
+            .app-meta {
+                gap: 0.5rem;
+            }
+        }
+
+        @media (max-width: 768px) and (min-width: 481px) {
+            .apps-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="gradient-bg"></div>
+    <div class="noise"></div>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="logo">JOZETH<span style="color: var(--primary);">CPM1</span></div>
+        <div class="nav-links">
+            <a href="#home" class="active">Inicio</a>
+            <a href="#apps">Apps</a>
+            <a href="#privacidad" onclick="showPrivacy()">Privacidad</a>
+            <a href="#contacto" onclick="showContact()">Contacto</a>
+        </div>
+        <div class="social-header">
+            <a href="https://www.youtube.com/@JOZETHCPM1" target="_blank"><i class="fab fa-youtube"></i></a>
+            <a href="https://www.tiktok.com/@.asmodeotk" target="_blank"><i class="fab fa-tiktok"></i></a>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>JOZETHCPM1<br>APK HUB</h1>
+            <p>Las mejores aplicaciones, juegos modificados y tutoriales. 100% legítimo y seguro.</p>
+        </div>
+    </section>
+
+    <!-- MAIN CONTENT -->
+    <main id="mainContent">
+        <!-- BUSCADOR -->
+        <div class="search-container">
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="Buscar app por nombre...">
+                <button onclick="searchApps()"><i class="fas fa-search"></i> Buscar</button>
+            </div>
+        </div>
+
+        <!-- FILTROS -->
+        <div class="category-filters">
+            <button class="category-btn active" onclick="filterApps('all')">
+                <i class="fas fa-grid-2"></i> Todos
+            </button>
+            <button class="category-btn" onclick="filterApps('games')">
+                <i class="fas fa-gamepad"></i> Juegos
+            </button>
+            <button class="category-btn" onclick="filterApps('mods')">
+                <i class="fas fa-code"></i> Apps Mod
+            </button>
+            <button class="category-btn" onclick="filterApps('tutorials')">
+                <i class="fas fa-video"></i> Tutoriales
+            </button>
+            <button class="category-btn" onclick="filterApps('scripts')">
+                <i class="fas fa-terminal"></i> Scripts
+            </button>
+        </div>
+
+        <!-- GRID DE APPS -->
+        <div class="apps-grid" id="appsGrid"></div>
+    </main>
+
+    <!-- SOCIAL SECTION -->
+    <section class="social-section">
+        <h2 class="social-title">📱 Conéctate con nosotros</h2>
+        <div class="social-buttons">
+            <a href="https://t.me/Jozethcpm0" target="_blank" class="social-btn telegram">
+                <i class="fab fa-telegram"></i> Telegram
+            </a>
+            <a href="https://discord.gg/daJQPFmUF" target="_blank" class="social-btn discord">
+                <i class="fab fa-discord"></i> Discord
+            </a>
+            <a href="https://www.tiktok.com/@.asmodeotk" target="_blank" class="social-btn tiktok">
+                <i class="fab fa-tiktok"></i> TikTok
+            </a>
+            <a href="https://www.youtube.com/@JOZETHCPM1" target="_blank" class="social-btn youtube">
+                <i class="fab fa-youtube"></i> YouTube
+            </a>
+            <a href="mailto:asmodeotayson@gmail.com" class="social-btn email">
+                <i class="fas fa-envelope"></i> Email
+            </a>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>JOZETHCPM1</h4>
+                <p>Tu hub de confianza para aplicaciones y juegos modificados. Todo 100% legítimo y verificado.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Enlaces rápidos</h4>
+                <a href="#home" onclick="showHome()">Inicio</a>
+                <a href="#apps" onclick="showHome()">Apps</a>
+                <a href="#privacidad" onclick="showPrivacy()">Política de Privacidad</a>
+                <a href="#contacto" onclick="showContact()">Contacto</a>
+            </div>
+            <div class="footer-section">
+                <h4>Contacto</h4>
+                <a href="mailto:asmodeotayson@gmail.com"><i class="fas fa-envelope"></i> asmodeotayson@gmail.com</a>
+                <a href="https://t.me/Jozethcpm0"><i class="fab fa-telegram"></i> @Jozethcpm0</a>
+                <a href="https://discord.gg/daJQPFmUF"><i class="fab fa-discord"></i> Discord</a>
+                <a href="https://www.tiktok.com/@.asmodeotk"><i class="fab fa-tiktok"></i> @.asmodeotk</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2024 JOZETHCPM1 APK HUB. Todos los derechos reservados.</p>
+            <p style="margin-top: 0.5rem; color: var(--primary);">🌟 100% legítimo y seguro 🌟</p>
+        </div>
+    </footer>
+
+    <script>
+        // ============================================
+        // BASE DE DATOS DE APPS - ¡MODIFICA AQUÍ!
+        // ============================================
+        // Para agregar una nueva app, solo copia y pega este formato:
+        /*
+        {
+            id: 5,
+            name: 'Nombre de la App',
+            category: 'games', // Opciones: games, mods, tutorials, scripts
+            categoryLabel: '🎮 Juegos', // Usa el ícono que quieras
+            description: 'Descripción de la app',
+            image: 'URL de la imagen',
+            size: 'XX MB',
+            version: 'v1.0',
+            downloads: 'XXK',
+            url: 'https://enlace-de-descarga.com'
+        },
+        */
+        
+        const appsDatabase = [
+            {
+                id: 1,
+                name: 'MT Manager',
+                category: 'mods',
+                categoryLabel: '📦 App Mod',
+                description: 'Potente gestor de archivos APK con editor integrado. Perfecto para modificar aplicaciones y juegos.',
+                image: 'https://via.placeholder.com/300x180/1a1a1a/7c3aed?text=MT+Manager',
+                size: '8.5 MB',
+                version: '2.15.7',
+                downloads: '150K',
+                url: 'https://www.mediafire.com/file/qvtjqahtjc5dr7p/MT_Manager_2.15.7-clone.apk/file'
+            },
+            {
+                id: 2,
+                name: 'Ishiruka Emulador',
+                category: 'games',
+                categoryLabel: '🎮 Juegos',
+                description: 'Emulador de GameCube y Wii optimizado para Android. Juega tus clásicos favoritos.',
+                image: 'https://via.placeholder.com/300x180/1a1a1a/7c3aed?text=Ishiruka',
+                size: '25 MB',
+                version: 'v16',
+                downloads: '200K',
+                url: 'https://www.mediafire.com/file/o4zfia09jjve16v/Ishiruka_Ishiruka_v16.apk/file'
+            },
+            {
+                id: 3,
+                name: 'Car Parking Multiplayer MOD',
+                category: 'mods',
+                categoryLabel: '📦 App Mod',
+                description: 'Parking multiplayer con coches modificados, dinero infinito y todo premium.',
+                image: 'https://via.placeholder.com/300x180/1a1a1a/7c3aed?text=Car+Parking',
+                size: '482 MB',
+                version: '4.8.2.13',
+                downloads: '500K',
+                url: 'https://www.mediafire.com/file/et46cxcu69ehaok/cpm48213modt-Appsfab.net.apk/file'
+            },
+            {
+                id: 4,
+                name: 'Resident Evil 4',
+                category: 'games',
+                categoryLabel: '🎮 Juegos',
+                description: 'Resident Evil 4 Wii Edition para Android. Versión completa con saves.',
+                image: 'https://via.placeholder.com/300x180/1a1a1a/7c3aed?text=Resident+Evil+4',
+                size: '4.2 GB',
+                version: 'Wii Edition',
+                downloads: '100K',
+                url: 'https://www.mediafire.com/file/yimnvpsek5d1nl2/Resident_Evil_4_-_Wii_Edition_%2528USA%2529.nkit.7z/file'
+            }
+        ];
+
+        // ============================================
+        // FUNCIONES DE LA APLICACIÓN
+        // ============================================
+        
+        let currentFilter = 'all';
+        let currentSearch = '';
+
+        function loadApps() {
+            const grid = document.getElementById('appsGrid');
+            if (!grid) return;
+            
+            let filteredApps = appsDatabase;
+            
+            // Filtrar por categoría
+            if (currentFilter !== 'all') {
+                filteredApps = filteredApps.filter(app => app.category === currentFilter);
+            }
+            
+            // Filtrar por búsqueda
+            if (currentSearch) {
+                filteredApps = filteredApps.filter(app => 
+                    app.name.toLowerCase().includes(currentSearch.toLowerCase())
+                );
+            }
+            
+            if (filteredApps.length === 0) {
+                grid.innerHTML = `
+                    <div style="grid-column:1/-1; text-align:center; padding:3rem;">
+                        <i class="fas fa-search" style="font-size:3rem; color:#9ca3af;"></i>
+                        <p style="color:#9ca3af; margin-top:1rem;">No se encontraron apps con ese nombre</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            grid.innerHTML = filteredApps.map(app => `
+                <div class="app-card">
+                    <img src="${app.image}" alt="${app.name}" class="app-image" 
+                         onerror="this.src='https://via.placeholder.com/300x180/1a1a1a/7c3aed?text=${app.name}'">
+                    <span class="app-category">${app.categoryLabel}</span>
+                    <h3 class="app-title">${app.name}</h3>
+                    <p class="app-description">${app.description}</p>
+                    <div class="app-meta">
+                        <span><i class="fas fa-weight-hanging"></i> ${app.size}</span>
+                        <span><i class="fas fa-tag"></i> v${app.version}</span>
+                        <span><i class="fas fa-download"></i> ${app.downloads}</span>
+                    </div>
+                    <a href="${app.url}" class="download-btn" target="_blank" rel="noopener noreferrer">
+                        <i class="fas fa-download"></i> Descargar
+                    </a>
+                </div>
+            `).join('');
+        }
+
+        function filterApps(category) {
+            currentFilter = category;
+            
+            document.querySelectorAll('.category-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            loadApps();
+        }
+
+        function searchApps() {
+            currentSearch = document.getElementById('searchInput').value;
+            loadApps();
+        }
+
+        // ============================================
+        // NAVEGACIÓN ENTRE PÁGINAS
+        // ============================================
+        
+        function showHome() {
+            document.getElementById('mainContent').innerHTML = `
+                <!-- BUSCADOR -->
+                <div class="search-container">
+                    <div class="search-box">
+                        <input type="text" id="searchInput" placeholder="Buscar app por nombre..." value="${currentSearch}">
+                        <button onclick="searchApps()"><i class="fas fa-search"></i> Buscar</button>
+                    </div>
+                </div>
+
+                <!-- FILTROS -->
+                <div class="category-filters">
+                    <button class="category-btn ${currentFilter === 'all' ? 'active' : ''}" onclick="filterApps('all')">
+                        <i class="fas fa-grid-2"></i> Todos
+                    </button>
+                    <button class="category-btn ${currentFilter === 'games' ? 'active' : ''}" onclick="filterApps('games')">
+                        <i class="fas fa-gamepad"></i> Juegos
+                    </button>
+                    <button class="category-btn ${currentFilter === 'mods' ? 'active' : ''}" onclick="filterApps('mods')">
+                        <i class="fas fa-code"></i> Apps Mod
+                    </button>
+                    <button class="category-btn ${currentFilter === 'tutorials' ? 'active' : ''}" onclick="filterApps('tutorials')">
+                        <i class="fas fa-video"></i> Tutoriales
+                    </button>
+                    <button class="category-btn ${currentFilter === 'scripts' ? 'active' : ''}" onclick="filterApps('scripts')">
+                        <i class="fas fa-terminal"></i> Scripts
+                    </button>
+                </div>
+
+                <!-- GRID DE APPS -->
+                <div class="apps-grid" id="appsGrid"></div>
+            `;
+            
+            document.querySelectorAll('.nav-links a').forEach(link => link.classList.remove('active'));
+            document.querySelector('.nav-links a[href="#home"]').classList.add('active');
+            
+            loadApps();
+        }
+
+        function showPrivacy() {
+            document.getElementById('mainContent').innerHTML = `
+                <div style="max-width:800px; margin:2rem auto; padding:2rem; background:rgba(255,255,255,0.02); border-radius:20px;">
+                    <h1 style="color:var(--primary); margin-bottom:2rem;">📋 Política de Privacidad</h1>
+                    
+                    <h2 style="color:#fff; margin:2rem 0 1rem;">Compromiso con la transparencia</h2>
+                    <p style="color:var(--gray); margin-bottom:1rem;">En JOZETHCPM1 APK HUB, nos tomamos muy en serio tu privacidad. Esta política describe cómo manejamos tu información cuando visitas nuestro sitio web.</p>
+
+                    <h2 style="color:#fff; margin:2rem 0 1rem;">Información que recopilamos</h2>
+                    <p style="color:var(--gray); margin-bottom:1rem;">No recopilamos información personal de nuestros visitantes. No requerimos registro, no usamos cookies de rastreo y no almacenamos datos de usuarios.</p>
+
+                    <h2 style="color:#fff; margin:2rem 0 1rem;">Enlaces externos</h2>
+                    <p style="color:var(--gray); margin-bottom:1rem;">Nuestro sitio contiene enlaces a sitios externos (MediaFire, etc.). No tenemos control sobre el contenido o prácticas de privacidad de estos sitios y no somos responsables de sus políticas.</p>
+
+                    <h2 style="color:#fff; margin:2rem 0 1rem;">Legitimidad del contenido</h2>
+                    <p style="color:var(--gray); margin-bottom:1rem;"><strong style="color:var(--primary);">🌟 100% LEGÍTIMO 🌟</strong> - Todos los enlaces compartidos en nuestra plataforma son verificados y provienen de fuentes confiables.</p>
+                </div>
+            `;
+            
+            document.querySelectorAll('.nav-links a').forEach(link => link.classList.remove('active'));
+            document.querySelector('.nav-links a[href="#privacidad"]').classList.add('active');
+        }
+
+        function showContact() {
+            document.getElementById('mainContent').innerHTML = `
+                <div style="max-width:600px; margin:2rem auto; padding:2rem; background:rgba(255,255,255,0.02); border-radius:20px; text-align:center;">
+                    <h1 style="color:var(--primary); margin-bottom:2rem;">📬 Contacto</h1>
+                    
+                    <div style="margin:2rem 0;">
+                        <div style="display:flex; align-items:center; justify-content:center; gap:1rem; padding:1rem; background:rgba(255,255,255,0.05); border-radius:10px; margin-bottom:1rem;">
+                            <i class="fas fa-envelope fa-2x" style="color:var(--primary);"></i>
+                            <div>
+                                <h3 style="color:#fff;">Email</h3>
+                                <p style="color:var(--gray);">asmodeotayson@gmail.com</p>
+                            </div>
+                        </div>
+                        
+                        <div style="display:flex; align-items:center; justify-content:center; gap:1rem; padding:1rem; background:rgba(255,255,255,0.05); border-radius:10px; margin-bottom:1rem;">
+                            <i class="fab fa-telegram fa-2x" style="color:#0088cc;"></i>
+                            <div>
+                                <h3 style="color:#fff;">Telegram</h3>
+                                <p style="color:var(--gray);">@Jozethcpm0</p>
+                            </div>
+                        </div>
+                        
+                        <div style="display:flex; align-items:center; justify-content:center; gap:1rem; padding:1rem; background:rgba(255,255,255,0.05); border-radius:10px; margin-bottom:1rem;">
+                            <i class="fab fa-discord fa-2x" style="color:#5865f2;"></i>
+                            <div>
+                                <h3 style="color:#fff;">Discord</h3>
+                                <p style="color:var(--gray);">https://discord.gg/daJQPFmUF</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div style="margin-top:2rem; padding:1.5rem; background:rgba(124,58,237,0.1); border-radius:10px;">
+                        <h3 style="color:var(--primary);">🌟 100% LEGÍTIMO</h3>
+                        <p style="color:var(--gray);">Todos nuestros enlaces son verificados y seguros.</p>
+                    </div>
+                </div>
+            `;
+            
+            document.querySelectorAll('.nav-links a').forEach(link => link.classList.remove('active'));
+            document.querySelector('.nav-links a[href="#contacto"]').classList.add('active');
+        }
+
+        // Inicializar
+        document.addEventListener('DOMContentLoaded', () => {
+            showHome();
+            
+            document.getElementById('searchInput')?.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') searchApps();
+            });
+        });
+    </script>
+</body>
+</html>
