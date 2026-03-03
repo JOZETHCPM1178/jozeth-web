@@ -1,5 +1,5 @@
 // ============================================
-// BASE DE DATOS DE APPS - FÁCIL DE ACTUALIZAR
+// BASE DE DATOS DE APPS - ACTUALIZACIÓN FÁCIL
 // ============================================
 
 const appsDatabase = [
@@ -7,10 +7,9 @@ const appsDatabase = [
         id: 1,
         name: 'MT Manager',
         category: 'mods',
-        categoryLabel: 'App Mod',
+        categoryLabel: '📦 App Mod',
         description: 'Potente gestor de archivos APK con editor integrado. Perfecto para modificar aplicaciones y juegos.',
-        // IMAGEN - Pon aquí la URL de tu imagen
-        image: 'images/mt-manager.jpg',
+        image: 'https://via.placeholder.com/300x180/1a1a1a/7c3aed?text=MT+Manager',
         size: '8.5 MB',
         version: '2.15.7',
         downloads: '150K',
@@ -20,9 +19,9 @@ const appsDatabase = [
         id: 2,
         name: 'Ishiruka Emulador',
         category: 'games',
-        categoryLabel: 'Juegos',
+        categoryLabel: '🎮 Juegos',
         description: 'Emulador de GameCube y Wii optimizado para Android. Juega tus clásicos favoritos.',
-        image: 'images/ishiruka.jpg',
+        image: 'https://via.placeholder.com/300x180/1a1a1a/7c3aed?text=Ishiruka',
         size: '25 MB',
         version: 'v16',
         downloads: '200K',
@@ -32,9 +31,9 @@ const appsDatabase = [
         id: 3,
         name: 'Car Parking Multiplayer MOD',
         category: 'mods',
-        categoryLabel: 'App Mod',
+        categoryLabel: '📦 App Mod',
         description: 'Parking multiplayer con coches modificados, dinero infinito y todo premium.',
-        image: 'images/car-parking.jpg',
+        image: 'https://via.placeholder.com/300x180/1a1a1a/7c3aed?text=Car+Parking',
         size: '482 MB',
         version: '4.8.2.13',
         downloads: '500K',
@@ -44,9 +43,9 @@ const appsDatabase = [
         id: 4,
         name: 'Resident Evil 4',
         category: 'games',
-        categoryLabel: 'Juegos',
+        categoryLabel: '🎮 Juegos',
         description: 'Resident Evil 4 Wii Edition para Android. Versión completa con saves.',
-        image: 'images/resident-evil.jpg',
+        image: 'https://via.placeholder.com/300x180/1a1a1a/7c3aed?text=Resident+Evil+4',
         size: '4.2 GB',
         version: 'Wii Edition',
         downloads: '100K',
@@ -55,23 +54,22 @@ const appsDatabase = [
 ];
 
 // ============================================
-// CÓMO AÑADIR MÁS APPS (SOLO COPIA Y PEGA ESTO)
+// INSTRUCCIONES PARA AÑADIR NUEVAS APPS:
 // ============================================
 /*
-EJEMPLO PARA NUEVA APP:
-
+1. COPIA este formato:
 {
-    id: 5,  // ← Número siguiente
-    name: 'Nombre de la App',
-    category: 'games',  // Opciones: games, mods, tutorials, scripts
-    categoryLabel: 'Juegos',  // Opciones: Juegos, App Mod, Tutorial, Script
-    description: 'Descripción de la app aquí',
-    image: 'images/nombre-imagen.jpg',  // ← La imagen en carpeta images/
+    id: 5,
+    name: 'Nombre App',
+    category: 'games', // Opciones: games, mods, tutorials, scripts
+    categoryLabel: '🎮 Juegos', // Elige el ícono que quieras
+    description: 'Descripción',
+    image: 'URL de la imagen',
     size: 'XX MB',
     version: 'v1.0',
     downloads: 'XXK',
-    url: 'https://enlace-de-descarga.com/file'
+    url: 'enlace de descarga'
 },
 
-// PEGA AQUÍ ARRIBA, ANTES DEL CORCHETE DE CIERRE ]
+2. PÉGALO ANTES del último CORCHETE de cierre ]
 */
