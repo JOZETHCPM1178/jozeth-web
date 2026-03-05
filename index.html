@@ -3,69 +3,450 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JOZETHCPM1 | NEON HUB</title>
+    <title>JOZETHCPM1 | APK HUB</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* Mismo CSS de antes, no lo repito para no alargar, pero pon el mismo */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #0a0a0a;
+            color: white;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #7c3aed, #10b981);
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(124,58,237,0.3);
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+        }
+
+        .header p {
+            opacity: 0.9;
+            font-size: 1.1rem;
+        }
+
+        /* Nav */
+        .nav {
+            background: #111;
+            padding: 1rem;
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            border-bottom: 1px solid #222;
+        }
+
+        .nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            padding: 0.5rem 1.5rem;
+            border-radius: 30px;
+            transition: all 0.3s;
+            background: #1a1a1a;
+        }
+
+        .nav a:hover, .nav a.active {
+            background: #7c3aed;
+        }
+
+        /* Buscador */
+        .search-container {
+            max-width: 500px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .search-box {
+            display: flex;
+            background: #1a1a1a;
+            border-radius: 50px;
+            padding: 0.3rem;
+            border: 2px solid #7c3aed;
+        }
+
+        .search-box input {
+            flex: 1;
+            background: transparent;
+            border: none;
+            padding: 1rem 1.5rem;
+            color: white;
+            font-size: 1rem;
+            outline: none;
+        }
+
+        .search-box button {
+            background: #7c3aed;
+            border: none;
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        /* Filtros */
+        .filters {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin: 2rem 0;
+            padding: 0 1rem;
+        }
+
+        .filter-btn {
+            padding: 0.8rem 2rem;
+            background: #1a1a1a;
+            border: none;
+            color: white;
+            border-radius: 40px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .filter-btn.active {
+            background: #7c3aed;
+        }
+
+        /* Grid */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem;
+        }
+
+        .card {
+            background: #1a1a1a;
+            border-radius: 20px;
+            overflow: hidden;
+            transition: transform 0.3s;
+            border: 1px solid #333;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: #7c3aed;
+        }
+
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            background: #333;
+        }
+
+        .card-content {
+            padding: 1.5rem;
+        }
+
+        .card-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .card-category {
+            display: inline-block;
+            padding: 0.3rem 1rem;
+            background: #7c3aed;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .download-btn {
+            display: block;
+            text-align: center;
+            background: #7c3aed;
+            color: white;
+            text-decoration: none;
+            padding: 0.8rem;
+            border-radius: 12px;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+
+        .download-btn:hover {
+            background: #6d28d9;
+        }
+
+        /* Redes sociales */
+        .social {
+            text-align: center;
+            padding: 4rem 1rem;
+            background: #111;
+            margin-top: 3rem;
+        }
+
+        .social h2 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .social-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .social-btn {
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: transform 0.3s;
+        }
+
+        .social-btn:hover {
+            transform: scale(1.05);
+        }
+
+        .telegram { background: #0088cc; }
+        .discord { background: #5865f2; }
+        .tiktok { background: #000; }
+        .youtube { background: #ff0000; }
+        .email { background: #7c3aed; }
+
+        /* Footer */
+        footer {
+            background: #0a0a0a;
+            padding: 2rem;
+            text-align: center;
+            border-top: 1px solid #222;
+            color: #666;
+        }
+
+        /* Loading */
+        .loading {
+            text-align: center;
+            padding: 3rem;
+        }
+
+        .loading i {
+            font-size: 3rem;
+            color: #7c3aed;
+            margin-bottom: 1rem;
+        }
     </style>
 </head>
 <body>
-    <!-- Mismo HTML de antes hasta el footer -->
+    <div class="header">
+        <h1>JOZETHCPM1</h1>
+        <p>APK HUB - Apps y Juegos MOD</p>
+    </div>
+
+    <div class="nav">
+        <a href="#inicio" class="active" onclick="showPage('inicio')">Inicio</a>
+        <a href="#privacidad" onclick="showPage('privacidad')">Privacidad</a>
+        <a href="#contacto" onclick="showPage('contacto')">Contacto</a>
+    </div>
+
+    <main id="main-content">
+        <!-- El contenido se carga aquí -->
+        <div class="loading">
+            <i class="fas fa-spinner fa-spin"></i>
+            <p>Cargando apps...</p>
+        </div>
+    </main>
+
+    <div class="social">
+        <h2>📱 Conéctate con nosotros</h2>
+        <div class="social-buttons">
+            <a href="https://t.me/Jozethcpm0" target="_blank" class="social-btn telegram"><i class="fab fa-telegram"></i> Telegram</a>
+            <a href="https://discord.gg/daJQPFmUF" target="_blank" class="social-btn discord"><i class="fab fa-discord"></i> Discord</a>
+            <a href="https://www.tiktok.com/@.asmodeotk" target="_blank" class="social-btn tiktok"><i class="fab fa-tiktok"></i> TikTok</a>
+            <a href="https://www.youtube.com/@JOZETHCPM1" target="_blank" class="social-btn youtube"><i class="fab fa-youtube"></i> YouTube</a>
+            <a href="mailto:asmodeotayson@gmail.com" class="social-btn email"><i class="fas fa-envelope"></i> Email</a>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2024 JOZETHCPM1 APK HUB - 100% LEGÍTIMO Y SEGURO</p>
+    </footer>
 
     <script>
-        // ========== DATOS DIRECTOS (SIN JSON) ==========
-        const appsData = [
-            {
-                id: 1,
-                nombre: "Car Parking Multiplayer MOD",
-                categoria: "juegos",
-                etiqueta: "🎮 JUEGO MOD",
-                descripcion: "Multijugador de estacionamiento con coches modificados, dinero infinito y eventos online.",
-                imagen: "https://via.placeholder.com/300x180/1a1a1a/ff00ff?text=Car+Parking",
-                tamaño: "482 MB",
-                version: "4.8.2",
-                url: "https://www.mediafire.com/file/et46cxcu69ehaok/cpm48213modt-Appsfab.net.apk/file"
-            },
-            {
-                id: 2,
-                nombre: "Resident Evil 4 Wii Edition",
-                categoria: "juegos",
-                etiqueta: "🎮 JUEGO MOD",
-                descripcion: "Clásico de terror en versión Wii para Android con texturas mejoradas.",
-                imagen: "https://via.placeholder.com/300x180/1a1a1a/00ffff?text=Resident+Evil+4",
-                tamaño: "4.2 GB",
-                version: "Wii NTSC",
-                url: "https://www.mediafire.com/file/yimnvpsek5d1nl2/Resident_Evil_4_-_Wii_Edition_%2528USA%2529.nkit.7z/file"
-            },
-            {
-                id: 3,
-                nombre: "MT Manager",
-                categoria: "apps",
-                etiqueta: "📱 APP MOD",
-                descripcion: "Gestor de archivos con editor de APK, traductor de recursos y explorador root.",
-                imagen: "https://via.placeholder.com/300x180/1a1a1a/00ff00?text=MT+Manager",
-                tamaño: "8.5 MB",
-                version: "2.15.7",
-                url: "https://www.mediafire.com/file/qvtjqahtjc5dr7p/MT_Manager_2.15.7-clone.apk/file"
-            },
-            {
-                id: 4,
-                nombre: "Ishiruka Emulador",
-                categoria: "apps",
-                etiqueta: "📱 APP MOD",
-                descripcion: "Emulador de GameCube/Wii optimizado para Android, basado en Dolphin.",
-                imagen: "https://via.placeholder.com/300x180/1a1a1a/ffff00?text=Ishiruka",
-                tamaño: "25 MB",
-                version: "16.0",
-                url: "https://www.mediafire.com/file/o4zfia09jjve16v/Ishiruka_Ishiruka_v16.apk/file"
-            }
-        ];
+        // ===== VARIABLES =====
+        let appsData = [];
+        let currentFilter = 'todos';
+        let currentSearch = '';
+        let currentPage = 'inicio';
 
-        // El resto del JavaScript (renderInicio, mostrarApps, etc.) IGUAL
-        // ... (todo lo demás igual)
+        // ===== CARGAR APPS =====
+        async function loadApps() {
+            try {
+                const response = await fetch('data/apps.json');
+                const data = await response.json();
+                appsData = data.apps;
+                showHome();
+            } catch (error) {
+                console.error('Error:', error);
+                document.getElementById('main-content').innerHTML = `
+                    <div style="text-align:center; padding:3rem;">
+                        <i class="fas fa-exclamation-triangle" style="font-size:3rem; color:#ff4444;"></i>
+                        <p style="margin-top:1rem;">Error al cargar las apps</p>
+                    </div>
+                `;
+            }
+        }
+
+        // ===== MOSTAR INICIO =====
+        function showHome() {
+            currentPage = 'inicio';
+            document.getElementById('main-content').innerHTML = `
+                <div class="search-container">
+                    <div class="search-box">
+                        <input type="text" id="searchInput" placeholder="Buscar app..." value="${currentSearch}">
+                        <button onclick="searchApps()"><i class="fas fa-search"></i> Buscar</button>
+                    </div>
+                </div>
+
+                <div class="filters">
+                    <button class="filter-btn ${currentFilter === 'todos' ? 'active' : ''}" onclick="filterApps('todos')">Todos</button>
+                    <button class="filter-btn ${currentFilter === 'juegos' ? 'active' : ''}" onclick="filterApps('juegos')">Juegos</button>
+                    <button class="filter-btn ${currentFilter === 'apps' ? 'active' : ''}" onclick="filterApps('apps')">Apps</button>
+                </div>
+
+                <div class="grid" id="apps-grid"></div>
+            `;
+            
+            renderApps();
+            updateActiveNav('inicio');
+        }
+
+        // ===== RENDERIZAR APPS =====
+        function renderApps() {
+            let filtered = appsData;
+
+            if (currentFilter !== 'todos') {
+                filtered = filtered.filter(app => app.categoria === currentFilter);
+            }
+
+            if (currentSearch.trim() !== '') {
+                const search = currentSearch.toLowerCase().trim();
+                filtered = filtered.filter(app => 
+                    app.nombre.toLowerCase().includes(search)
+                );
+            }
+
+            const grid = document.getElementById('apps-grid');
+            
+            if (filtered.length === 0) {
+                grid.innerHTML = `
+                    <div style="grid-column:1/-1; text-align:center; padding:3rem;">
+                        <i class="fas fa-search" style="font-size:2rem; color:#666;"></i>
+                        <p style="margin-top:1rem;">No se encontraron apps</p>
+                    </div>
+                `;
+                return;
+            }
+
+            grid.innerHTML = filtered.map(app => `
+                <div class="card">
+                    <img src="${app.imagen}" alt="${app.nombre}" onerror="this.src='https://via.placeholder.com/300x200/333/7c3aed?text=${app.nombre}'">
+                    <div class="card-content">
+                        <span class="card-category">${app.categoria === 'juegos' ? '🎮 Juego' : '📱 App'}</span>
+                        <h3 class="card-title">${app.nombre}</h3>
+                        <a href="${app.url}" class="download-btn" target="_blank">
+                            <i class="fas fa-download"></i> Descargar
+                        </a>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // ===== FILTRAR =====
+        function filterApps(filter) {
+            currentFilter = filter;
+            document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            renderApps();
+        }
+
+        // ===== BUSCAR =====
+        function searchApps() {
+            currentSearch = document.getElementById('searchInput').value;
+            renderApps();
+        }
+
+        // ===== MOSTRAR PRIVACIDAD =====
+        function showPrivacy() {
+            currentPage = 'privacidad';
+            document.getElementById('main-content').innerHTML = `
+                <div style="max-width:800px; margin:2rem auto; padding:2rem;">
+                    <h1 style="color:#7c3aed; margin-bottom:1rem;">📋 Política de Privacidad</h1>
+                    <p style="color:#999; line-height:1.8;">En JOZETHCPM1 APK HUB respetamos tu privacidad. No recopilamos información personal, no usamos cookies y no almacenamos datos de usuarios.</p>
+                    <p style="color:#999; margin-top:1rem;">Los enlaces son a sitios externos (MediaFire). Verificamos cada enlace antes de publicarlo.</p>
+                    <p style="color:#7c3aed; margin-top:2rem;">🌟 100% LEGÍTIMO Y SEGURO 🌟</p>
+                </div>
+            `;
+            updateActiveNav('privacidad');
+        }
+
+        // ===== MOSTRAR CONTACTO =====
+        function showContact() {
+            currentPage = 'contacto';
+            document.getElementById('main-content').innerHTML = `
+                <div style="max-width:600px; margin:2rem auto; padding:2rem;">
+                    <h1 style="color:#7c3aed; margin-bottom:2rem;">📬 Contacto</h1>
+                    <div style="background:#1a1a1a; padding:1.5rem; border-radius:12px; margin-bottom:1rem;">
+                        <p><i class="fas fa-envelope" style="color:#7c3aed; width:30px;"></i> asmodeotayson@gmail.com</p>
+                    </div>
+                    <div style="background:#1a1a1a; padding:1.5rem; border-radius:12px; margin-bottom:1rem;">
+                        <p><i class="fab fa-telegram" style="color:#0088cc; width:30px;"></i> @Jozethcpm0</p>
+                    </div>
+                    <div style="background:#1a1a1a; padding:1.5rem; border-radius:12px;">
+                        <p><i class="fab fa-discord" style="color:#5865f2; width:30px;"></i> discord.gg/daJQPFmUF</p>
+                    </div>
+                </div>
+            `;
+            updateActiveNav('contacto');
+        }
+
+        // ===== ACTUALIZAR NAV =====
+        function updateActiveNav(page) {
+            document.querySelectorAll('.nav a').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('onclick')?.includes(page)) {
+                    link.classList.add('active');
+                }
+            });
+        }
+
+        // ===== NAVEGACIÓN =====
+        window.showPage = function(page) {
+            if (page === 'inicio') showHome();
+            if (page === 'privacidad') showPrivacy();
+            if (page === 'contacto') showContact();
+        };
+
+        // ===== INICIAR =====
+        loadApps();
     </script>
 </body>
 </html>
