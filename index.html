@@ -3,129 +3,73 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JOZETHCPM1 | APK HUB</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>JOZETHCPM1 - APK Hub</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
         body {
-            font-family: 'Inter', sans-serif;
+            font-family: Arial, sans-serif;
             background: #0a0a0a;
             color: white;
         }
-
-        /* Header */
         .header {
-            background: linear-gradient(135deg, #7c3aed, #10b981);
-            padding: 1.5rem;
+            background: #7c3aed;
+            padding: 2rem;
             text-align: center;
-            box-shadow: 0 4px 20px rgba(124,58,237,0.3);
         }
-
         .header h1 {
             font-size: 2.5rem;
-            font-weight: 800;
-            margin-bottom: 0.5rem;
         }
-
-        .header p {
-            opacity: 0.9;
-            font-size: 1.1rem;
-        }
-
-        /* Nav */
         .nav {
-            background: #111;
+            background: #1a1a1a;
             padding: 1rem;
             display: flex;
             justify-content: center;
-            gap: 1.5rem;
-            flex-wrap: wrap;
-            border-bottom: 1px solid #222;
+            gap: 1rem;
         }
-
         .nav a {
             color: white;
             text-decoration: none;
-            font-weight: 600;
             padding: 0.5rem 1.5rem;
+            background: #333;
             border-radius: 30px;
-            transition: all 0.3s;
-            background: #1a1a1a;
         }
-
-        .nav a:hover, .nav a.active {
+        .nav a.active {
             background: #7c3aed;
         }
-
-        /* Buscador */
-        .search-container {
+        .search {
             max-width: 500px;
             margin: 2rem auto;
             padding: 0 1rem;
         }
-
-        .search-box {
-            display: flex;
+        .search input {
+            width: 100%;
+            padding: 1rem;
             background: #1a1a1a;
-            border-radius: 50px;
-            padding: 0.3rem;
             border: 2px solid #7c3aed;
-        }
-
-        .search-box input {
-            flex: 1;
-            background: transparent;
-            border: none;
-            padding: 1rem 1.5rem;
-            color: white;
-            font-size: 1rem;
-            outline: none;
-        }
-
-        .search-box button {
-            background: #7c3aed;
-            border: none;
-            color: white;
-            padding: 1rem 2rem;
             border-radius: 50px;
-            cursor: pointer;
-            font-weight: 600;
+            color: white;
         }
-
-        /* Filtros */
         .filters {
             display: flex;
             justify-content: center;
             gap: 1rem;
-            flex-wrap: wrap;
             margin: 2rem 0;
-            padding: 0 1rem;
         }
-
         .filter-btn {
             padding: 0.8rem 2rem;
             background: #1a1a1a;
             border: none;
             color: white;
-            border-radius: 40px;
-            font-weight: 600;
+            border-radius: 30px;
             cursor: pointer;
-            transition: all 0.3s;
         }
-
         .filter-btn.active {
             background: #7c3aed;
         }
-
-        /* Grid */
         .grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -134,319 +78,214 @@
             margin: 0 auto;
             padding: 1rem;
         }
-
         .card {
             background: #1a1a1a;
-            border-radius: 20px;
+            border-radius: 15px;
             overflow: hidden;
-            transition: transform 0.3s;
-            border: 1px solid #333;
         }
-
-        .card:hover {
-            transform: translateY(-5px);
-            border-color: #7c3aed;
-        }
-
         .card img {
             width: 100%;
-            height: 200px;
+            height: 180px;
             object-fit: cover;
             background: #333;
         }
-
         .card-content {
             padding: 1.5rem;
         }
-
-        .card-title {
-            font-size: 1.3rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-        }
-
-        .card-category {
-            display: inline-block;
-            padding: 0.3rem 1rem;
-            background: #7c3aed;
-            border-radius: 30px;
-            font-size: 0.8rem;
-            font-weight: 600;
+        .card h3 {
             margin-bottom: 1rem;
         }
-
-        .download-btn {
+        .card a {
             display: block;
-            text-align: center;
             background: #7c3aed;
             color: white;
             text-decoration: none;
             padding: 0.8rem;
-            border-radius: 12px;
-            font-weight: 600;
-            transition: background 0.3s;
+            border-radius: 10px;
+            text-align: center;
         }
-
-        .download-btn:hover {
-            background: #6d28d9;
-        }
-
-        /* Redes sociales */
         .social {
             text-align: center;
-            padding: 4rem 1rem;
-            background: #111;
-            margin-top: 3rem;
+            padding: 3rem;
+            background: #1a1a1a;
+            margin-top: 2rem;
         }
-
-        .social h2 {
-            font-size: 2rem;
-            margin-bottom: 2rem;
-        }
-
         .social-buttons {
             display: flex;
             justify-content: center;
             gap: 1rem;
             flex-wrap: wrap;
+            margin-top: 1.5rem;
         }
-
-        .social-btn {
-            padding: 1rem 2.5rem;
-            border-radius: 50px;
+        .social-buttons a {
+            padding: 0.8rem 2rem;
+            border-radius: 30px;
             color: white;
             text-decoration: none;
-            font-weight: 600;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            transition: transform 0.3s;
         }
-
-        .social-btn:hover {
-            transform: scale(1.05);
-        }
-
         .telegram { background: #0088cc; }
         .discord { background: #5865f2; }
         .tiktok { background: #000; }
         .youtube { background: #ff0000; }
         .email { background: #7c3aed; }
-
-        /* Footer */
         footer {
-            background: #0a0a0a;
+            text-align: center;
             padding: 2rem;
-            text-align: center;
-            border-top: 1px solid #222;
             color: #666;
-        }
-
-        /* Loading */
-        .loading {
-            text-align: center;
-            padding: 3rem;
-        }
-
-        .loading i {
-            font-size: 3rem;
-            color: #7c3aed;
-            margin-bottom: 1rem;
         }
     </style>
 </head>
 <body>
     <div class="header">
         <h1>JOZETHCPM1</h1>
-        <p>APK HUB - Apps y Juegos MOD</p>
+        <p>APK HUB</p>
     </div>
 
     <div class="nav">
-        <a href="#inicio" class="active" onclick="showPage('inicio')">Inicio</a>
-        <a href="#privacidad" onclick="showPage('privacidad')">Privacidad</a>
-        <a href="#contacto" onclick="showPage('contacto')">Contacto</a>
+        <a href="#" class="active" onclick="showHome()">Inicio</a>
+        <a href="#" onclick="showPrivacy()">Privacidad</a>
+        <a href="#" onclick="showContact()">Contacto</a>
     </div>
 
-    <main id="main-content">
-        <!-- El contenido se carga aquí -->
-        <div class="loading">
-            <i class="fas fa-spinner fa-spin"></i>
-            <p>Cargando apps...</p>
-        </div>
-    </main>
+    <div id="content">
+        <!-- Aquí se carga el contenido -->
+    </div>
 
     <div class="social">
-        <h2>📱 Conéctate con nosotros</h2>
+        <h3>📱 Redes Sociales</h3>
         <div class="social-buttons">
-            <a href="https://t.me/Jozethcpm0" target="_blank" class="social-btn telegram"><i class="fab fa-telegram"></i> Telegram</a>
-            <a href="https://discord.gg/daJQPFmUF" target="_blank" class="social-btn discord"><i class="fab fa-discord"></i> Discord</a>
-            <a href="https://www.tiktok.com/@.asmodeotk" target="_blank" class="social-btn tiktok"><i class="fab fa-tiktok"></i> TikTok</a>
-            <a href="https://www.youtube.com/@JOZETHCPM1" target="_blank" class="social-btn youtube"><i class="fab fa-youtube"></i> YouTube</a>
-            <a href="mailto:asmodeotayson@gmail.com" class="social-btn email"><i class="fas fa-envelope"></i> Email</a>
+            <a href="https://t.me/Jozethcpm0" class="telegram">Telegram</a>
+            <a href="https://discord.gg/daJQPFmUF" class="discord">Discord</a>
+            <a href="https://www.tiktok.com/@.asmodeotk" class="tiktok">TikTok</a>
+            <a href="https://www.youtube.com/@JOZETHCPM1" class="youtube">YouTube</a>
+            <a href="mailto:asmodeotayson@gmail.com" class="email">Email</a>
         </div>
     </div>
 
     <footer>
-        <p>© 2024 JOZETHCPM1 APK HUB - 100% LEGÍTIMO Y SEGURO</p>
+        <p>© 2024 JOZETHCPM1 - 100% LEGÍTIMO</p>
     </footer>
 
     <script>
-        // ===== VARIABLES =====
-        let appsData = [];
-        let currentFilter = 'todos';
-        let currentSearch = '';
-        let currentPage = 'inicio';
-
-        // ===== CARGAR APPS =====
-        async function loadApps() {
-            try {
-                const response = await fetch('data/apps.json');
-                const data = await response.json();
-                appsData = data.apps;
-                showHome();
-            } catch (error) {
-                console.error('Error:', error);
-                document.getElementById('main-content').innerHTML = `
-                    <div style="text-align:center; padding:3rem;">
-                        <i class="fas fa-exclamation-triangle" style="font-size:3rem; color:#ff4444;"></i>
-                        <p style="margin-top:1rem;">Error al cargar las apps</p>
-                    </div>
-                `;
+        // ===== TUS APPS AQUÍ (solo editas esto) =====
+        const apps = [
+            {
+                nombre: "Car Parking Multiplayer MOD",
+                categoria: "https://imgur.com/a/loVEbXy",
+                url: "https://www.mediafire.com/file/et46cxcu69ehaok/cpm48213modt-Appsfab.net.apk/file"
+            },
+            {
+                nombre: "Resident Evil 4 Wii",
+                categoria: "juegos",
+                imagen: "https://via.placeholder.com/300x200/333/7c3aed?text=Resident+Evil+4",
+                url: "https://www.mediafire.com/file/yimnvpsek5d1nl2/Resident_Evil_4_-_Wii_Edition_%2528USA%2529.nkit.7z/file"
+            },
+            {
+                nombre: "MT Manager",
+                categoria: "apps",
+                imagen: "https://via.placeholder.com/300x200/333/7c3aed?text=MT+Manager",
+                url: "https://www.mediafire.com/file/qvtjqahtjc5dr7p/MT_Manager_2.15.7-clone.apk/file"
+            },
+            {
+                nombre: "Ishiruka Emulador",
+                categoria: "apps",
+                imagen: "https://via.placeholder.com/300x200/333/7c3aed?text=Ishiruka",
+                url: "https://www.mediafire.com/file/o4zfia09jjve16v/Ishiruka_Ishiruka_v16.apk/file"
             }
-        }
+        ];
 
-        // ===== MOSTAR INICIO =====
+        let filtro = 'todos';
+        let busqueda = '';
+
         function showHome() {
-            currentPage = 'inicio';
-            document.getElementById('main-content').innerHTML = `
-                <div class="search-container">
-                    <div class="search-box">
-                        <input type="text" id="searchInput" placeholder="Buscar app..." value="${currentSearch}">
-                        <button onclick="searchApps()"><i class="fas fa-search"></i> Buscar</button>
-                    </div>
+            let html = `
+                <div class="search">
+                    <input type="text" id="searchInput" placeholder="Buscar app..." onkeyup="buscarApps()">
                 </div>
-
                 <div class="filters">
-                    <button class="filter-btn ${currentFilter === 'todos' ? 'active' : ''}" onclick="filterApps('todos')">Todos</button>
-                    <button class="filter-btn ${currentFilter === 'juegos' ? 'active' : ''}" onclick="filterApps('juegos')">Juegos</button>
-                    <button class="filter-btn ${currentFilter === 'apps' ? 'active' : ''}" onclick="filterApps('apps')">Apps</button>
+                    <button class="filter-btn ${filtro === 'todos' ? 'active' : ''}" onclick="filtrarApps('todos')">Todos</button>
+                    <button class="filter-btn ${filtro === 'juegos' ? 'active' : ''}" onclick="filtrarApps('juegos')">Juegos</button>
+                    <button class="filter-btn ${filtro === 'apps' ? 'active' : ''}" onclick="filtrarApps('apps')">Apps</button>
                 </div>
-
-                <div class="grid" id="apps-grid"></div>
+                <div class="grid" id="appsGrid"></div>
             `;
             
-            renderApps();
-            updateActiveNav('inicio');
+            document.getElementById('content').innerHTML = html;
+            mostrarApps();
+            
+            document.querySelectorAll('.nav a').forEach(a => a.classList.remove('active'));
+            document.querySelectorAll('.nav a')[0].classList.add('active');
         }
 
-        // ===== RENDERIZAR APPS =====
-        function renderApps() {
-            let filtered = appsData;
+        function mostrarApps() {
+            let appsFiltradas = apps;
 
-            if (currentFilter !== 'todos') {
-                filtered = filtered.filter(app => app.categoria === currentFilter);
+            if (filtro !== 'todos') {
+                appsFiltradas = appsFiltradas.filter(app => app.categoria === filtro);
             }
 
-            if (currentSearch.trim() !== '') {
-                const search = currentSearch.toLowerCase().trim();
-                filtered = filtered.filter(app => 
-                    app.nombre.toLowerCase().includes(search)
+            if (busqueda) {
+                appsFiltradas = appsFiltradas.filter(app => 
+                    app.nombre.toLowerCase().includes(busqueda.toLowerCase())
                 );
             }
 
-            const grid = document.getElementById('apps-grid');
-            
-            if (filtered.length === 0) {
-                grid.innerHTML = `
-                    <div style="grid-column:1/-1; text-align:center; padding:3rem;">
-                        <i class="fas fa-search" style="font-size:2rem; color:#666;"></i>
-                        <p style="margin-top:1rem;">No se encontraron apps</p>
-                    </div>
-                `;
+            let grid = document.getElementById('appsGrid');
+            if (!grid) return;
+
+            if (appsFiltradas.length === 0) {
+                grid.innerHTML = '<div style="grid-column:1/-1; text-align:center; padding:2rem;">No hay apps</div>';
                 return;
             }
 
-            grid.innerHTML = filtered.map(app => `
+            grid.innerHTML = appsFiltradas.map(app => `
                 <div class="card">
-                    <img src="${app.imagen}" alt="${app.nombre}" onerror="this.src='https://via.placeholder.com/300x200/333/7c3aed?text=${app.nombre}'">
+                    <img src="${app.imagen}" alt="${app.nombre}">
                     <div class="card-content">
-                        <span class="card-category">${app.categoria === 'juegos' ? '🎮 Juego' : '📱 App'}</span>
-                        <h3 class="card-title">${app.nombre}</h3>
-                        <a href="${app.url}" class="download-btn" target="_blank">
-                            <i class="fas fa-download"></i> Descargar
-                        </a>
+                        <h3>${app.nombre}</h3>
+                        <a href="${app.url}" target="_blank">📥 Descargar</a>
                     </div>
                 </div>
             `).join('');
         }
 
-        // ===== FILTRAR =====
-        function filterApps(filter) {
-            currentFilter = filter;
+        function filtrarApps(categoria) {
+            filtro = categoria;
             document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
             event.target.classList.add('active');
-            renderApps();
+            mostrarApps();
         }
 
-        // ===== BUSCAR =====
-        function searchApps() {
-            currentSearch = document.getElementById('searchInput').value;
-            renderApps();
+        function buscarApps() {
+            busqueda = document.getElementById('searchInput').value;
+            mostrarApps();
         }
 
-        // ===== MOSTRAR PRIVACIDAD =====
         function showPrivacy() {
-            currentPage = 'privacidad';
-            document.getElementById('main-content').innerHTML = `
-                <div style="max-width:800px; margin:2rem auto; padding:2rem;">
-                    <h1 style="color:#7c3aed; margin-bottom:1rem;">📋 Política de Privacidad</h1>
-                    <p style="color:#999; line-height:1.8;">En JOZETHCPM1 APK HUB respetamos tu privacidad. No recopilamos información personal, no usamos cookies y no almacenamos datos de usuarios.</p>
-                    <p style="color:#999; margin-top:1rem;">Los enlaces son a sitios externos (MediaFire). Verificamos cada enlace antes de publicarlo.</p>
-                    <p style="color:#7c3aed; margin-top:2rem;">🌟 100% LEGÍTIMO Y SEGURO 🌟</p>
-                </div>
-            `;
-            updateActiveNav('privacidad');
-        }
-
-        // ===== MOSTRAR CONTACTO =====
-        function showContact() {
-            currentPage = 'contacto';
-            document.getElementById('main-content').innerHTML = `
+            document.getElementById('content').innerHTML = `
                 <div style="max-width:600px; margin:2rem auto; padding:2rem;">
-                    <h1 style="color:#7c3aed; margin-bottom:2rem;">📬 Contacto</h1>
-                    <div style="background:#1a1a1a; padding:1.5rem; border-radius:12px; margin-bottom:1rem;">
-                        <p><i class="fas fa-envelope" style="color:#7c3aed; width:30px;"></i> asmodeotayson@gmail.com</p>
-                    </div>
-                    <div style="background:#1a1a1a; padding:1.5rem; border-radius:12px; margin-bottom:1rem;">
-                        <p><i class="fab fa-telegram" style="color:#0088cc; width:30px;"></i> @Jozethcpm0</p>
-                    </div>
-                    <div style="background:#1a1a1a; padding:1.5rem; border-radius:12px;">
-                        <p><i class="fab fa-discord" style="color:#5865f2; width:30px;"></i> discord.gg/daJQPFmUF</p>
-                    </div>
+                    <h2 style="color:#7c3aed;">📋 Política de Privacidad</h2>
+                    <p style="margin-top:1rem; color:#999;">No recopilamos datos personales. Los enlaces son a sitios externos.</p>
                 </div>
             `;
-            updateActiveNav('contacto');
+            document.querySelectorAll('.nav a').forEach(a => a.classList.remove('active'));
+            document.querySelectorAll('.nav a')[1].classList.add('active');
         }
 
-        // ===== ACTUALIZAR NAV =====
-        function updateActiveNav(page) {
-            document.querySelectorAll('.nav a').forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('onclick')?.includes(page)) {
-                    link.classList.add('active');
-                }
-            });
+        function showContact() {
+            document.getElementById('content').innerHTML = `
+                <div style="max-width:600px; margin:2rem auto; padding:2rem;">
+                    <h2 style="color:#7c3aed;">📬 Contacto</h2>
+                    <p style="margin-top:1rem;">📧 asmodeotayson@gmail.com</p>
+                    <p>📱 @Jozethcpm0 (Telegram)</p>
+                </div>
+            `;
+            document.querySelectorAll('.nav a').forEach(a => a.classList.remove('active'));
+            document.querySelectorAll('.nav a')[2].classList.add('active');
         }
 
-        // ===== NAVEGACIÓN =====
-        window.showPage = function(page) {
-            if (page === 'inicio') showHome();
-            if (page === 'privacidad') showPrivacy();
-            if (page === 'contacto') showContact();
-        };
-
-        // ===== INICIAR =====
-        loadApps();
+        // Iniciar
+        showHome();
     </script>
 </body>
 </html>
