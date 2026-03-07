@@ -3,10 +3,10 @@ const apps = [
 {
 nombre:"Spotify MOD",
 categoria:"APK MOD",
-imagen:"https://i.imgur.com/OdL0XPt.png",
-descripcion:"Spotify premium desbloqueado",
-descarga:"https://mediafire.com/ejemplo",
-playstore:"https://play.google.com/store/apps/details?id=com.spotify.music"
+imagen:"https://i.imgur.com/5N3uCEi.png",
+descripcion:"Car parking premium desbloqueado",
+descarga:"https://www.mediafire.com/file/et46cxcu69ehaok/cpm48213modt-Appsfab.net.apk/file",
+playstore:"https://play.google.com/store/apps/details?id=com.olzhas.carparking.multyplayer"
 },
 
 {
