@@ -1,7 +1,7 @@
 const apps = [
 
 {
-nombre:"Spotify MOD",
+nombre:"Car Parking Multiplayer",
 categoria:"APK MOD",
 imagen:"https://i.imgur.com/5N3uCEi.png",
 descripcion:"Car parking premium desbloqueado",
@@ -10,7 +10,7 @@ playstore:"https://play.google.com/store/apps/details?id=com.olzhas.carparking.m
 },
 
 {
-nombre:"Free Fire Script",
+nombre:"Script escapa del tsunami",
 categoria:"SCRIPT",
 imagen:"https://i.imgur.com/9z3s7Yp.png",
 descripcion:"Script optimizado para Free Fire",
@@ -19,7 +19,7 @@ playstore:"#"
 },
 
 {
-nombre:"Tutorial Root Android",
+nombre:"En proceso",
 categoria:"VIDEOS TUTORIALES",
 imagen:"https://i.imgur.com/k7KQF5T.png",
 descripcion:"Aprende a rootear tu Android",
