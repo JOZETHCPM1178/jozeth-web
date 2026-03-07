@@ -3,7 +3,7 @@ const apps = [
 {
 nombre:"Car Parking Multiplayer",
 categoria:"APK MOD",
-imagen:"https://i.imgur.com/5N3uCEi.png",
+imagen:"https://imgur.com/a/5N3uCEi",
 descripcion:"Car parking premium desbloqueado",
 descarga:"https://www.mediafire.com/file/et46cxcu69ehaok/cpm48213modt-Appsfab.net.apk/file",
 playstore:"https://play.google.com/store/apps/details?id=com.olzhas.carparking.multyplayer"
